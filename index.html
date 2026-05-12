@@ -1091,7 +1091,7 @@
         <!-- Hero -->
         <section class="hero">
   <h1 class="hero-title">Entrega Rápida</h1>
-  <p class="hero-subtitle">Entrega e instalação grátis em até 30 min.</p>
+  <p class="hero-subtitle">Entrega e instalação grátis em até 20 min.</p>
 
   <div id="location-widget" style="display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; margin-bottom: 10px; color: #2C9400; font-size: 14px; font-weight: bold; width: 100%;">
     
@@ -1179,7 +1179,7 @@
     </div>
         <div>
         <i class="fas fa-shipping-fast"></i>
-        <span>Entrega em até 30 minutos</span>
+        <span>Entrega em até 20 minutos</span>
     </div>
 </div>
             </div>
@@ -1193,7 +1193,7 @@
 
 <p id="delivery-status" style="color: #4F7942; font-size: 13px; font-weight: 500; text-align: center; margin: 10px 0; padding: 0; clear: both; letter-spacing: 0.3px;">
     <span id="loc-icon" style="display: none; opacity: 0.8;">📍</span> 
-    Entrega em 30 min. para <span id="location-target">sua região</span>
+    Entrega em 20 min. para <span id="location-target">sua região</span>
 </p>
 
 <script>
@@ -1277,7 +1277,7 @@
                     </div>
                     <span style="font-size: 0.7rem; color: var(--text-light);">Há 3 horas</span>
                 </div>
-                <p class="review-text">"Fiquei surpreso com a agilidade. Em menos de 30 minutos já estava com a bateria nova instalada. Nota 10!"</p>
+                <p class="review-text">"Fiquei surpreso com a agilidade. Em menos de 20 minutos já estava com a bateria nova instalada. Nota 10!"</p>
             </div>
         </section>
 
@@ -1361,7 +1361,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    Como é feita a entrega em 30 minutos?
+                    Como é feita a entrega em 20 minutos?
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
@@ -1480,7 +1480,7 @@
                                 <i class="fas fa-bolt"></i>
                                 <div class="shipping-info">
                                     <span class="shipping-name">Entrega Rápida</span>
-                                    <span class="shipping-time">Entrega em 30 minutos</span>
+                                    <span class="shipping-time">Entrega em 20 minutos</span>
                                 </div>
                                 <span class="shipping-price">GRÁTIS</span>
                             </div>
@@ -1852,7 +1852,7 @@
                 if (!day || !time) return alert('Selecione o dia e horário para o agendamento.');
                 scheduleText = `Agendado para: ${day.split('-').reverse().join('/')} às ${time}`;
             } else {
-                scheduleText = 'Entrega em 30 Minutos';
+                scheduleText = 'Entrega em 20 Minutos';
             }
             // Build Summary HTML
             let subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
@@ -1934,7 +1934,7 @@
                 const time = document.getElementById('schedule-time').value;
                 delivery_time = `Agendado para: ${day.split('-').reverse().join('/')} às ${time}`;
             } else {
-                delivery_time = 'Entrega em 30 Minutos';
+                delivery_time = 'Entrega em 20 Minutos';
             }
 
             // Constrói a URL com os parâmetros codificados
