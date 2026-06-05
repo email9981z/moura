@@ -424,6 +424,49 @@
   }
   @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   .loading-text { font-size: 18px; font-weight: 700; color: #111827; letter-spacing: -0.5px; }
+
+  /* ── RESUMO DO PEDIDO ── */
+  .order-summary {
+    padding: 16px 20px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .summary-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: #9ca3af; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .summary-label::before {
+    content: ''; display: inline-block; width: 3px; height: 12px;
+    background: #1e6cf2; border-radius: 2px;
+  }
+  .product-item {
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .product-image {
+    width: 60px; height: 60px; border-radius: 10px;
+    background-size: cover; background-position: center;
+    border: 1px solid #e5e7eb; flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .product-info { flex: 1; }
+  .product-name {
+    font-size: 13px; font-weight: 700; color: #111827;
+    margin-bottom: 4px; line-height: 1.3; word-break: break-word;
+  }
+  .product-details {
+    display: flex; align-items: center; gap: 8px; font-size: 12px;
+  }
+  .product-price {
+    color: #1e6cf2; font-weight: 700;
+  }
+  .product-qty {
+    color: #6b7280;
+  }
+  .product-qty::before {
+    content: '·';
+    margin: 0 4px;
+  }
 </style>
 </head>
 <body>
@@ -486,7 +529,15 @@
 
         <div class="card-divider"></div>
 
-        <!-- Bloco 3: Forma de Pagamento -->
+        <!-- Bloco 3: Resumo do Pedido -->
+        <div class="order-summary" id="orderSummary">
+          <div class="summary-label">Seu Pedido</div>
+          <div id="productsList"></div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <!-- Bloco 4: Forma de Pagamento -->
         <div class="payment-options-container">
           <div class="payment-label-header">Forma de Pagamento</div>
           <div class="payment-options-list">
@@ -672,6 +723,48 @@
         style: 'currency',
         currency: 'BRL'
       }).format(valor);
+    }
+
+    // Função para renderizar os produtos
+    function renderizarProdutos() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const productsJson = params.get('products');
+        
+        if (!productsJson) return;
+        
+        const products = JSON.parse(decodeURIComponent(productsJson));
+        const productsList = document.getElementById('productsList');
+        
+        if (!Array.isArray(products)) return;
+        
+        productsList.innerHTML = '';
+        
+        products.forEach(product => {
+          const productDiv = document.createElement('div');
+          productDiv.className = 'product-item';
+          
+          const imageSrc = product.p || '';
+          const productName = product.n || 'Produto';
+          const productPrice = parseFloat(product.v) || 0;
+          const quantity = parseInt(product.q) || 1;
+          
+          productDiv.innerHTML = `
+            <div class="product-image" style="background-image: url('${imageSrc}')"></div>
+            <div class="product-info">
+              <div class="product-name">${productName}</div>
+              <div class="product-details">
+                <span class="product-price">${formatarMoeda(productPrice)}</span>
+                <span class="product-qty">Qtd: ${quantity}</span>
+              </div>
+            </div>
+          `;
+          
+          productsList.appendChild(productDiv);
+        });
+      } catch (err) {
+        console.error('Erro ao renderizar produtos:', err);
+      }
     }
 
     // Função para atualizar os valores de pagamento
@@ -905,6 +998,9 @@
 
         // Atualizar valores de pagamento
         atualizarValoresPagamento();
+        
+        // Renderizar produtos
+        renderizarProdutos();
 
         var TOTAL = 3000;
         setTimeout(function() { atualizarBarra(40); }, TOTAL * 0.3);
