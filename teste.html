@@ -145,20 +145,19 @@
 
   .footer-note { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 16px; }
 
-  /* ── Overlay de confirmação (AJUSTADO PARA ROLAGEM) ── */
+  /* ── Overlay de confirmação ── */
   #confirmOverlay {
     position: fixed; inset: 0;
     background: #fff;
     z-index: 9999;
     opacity: 0; pointer-events: none;
     transition: opacity .4s ease;
-    overflow-y: auto; /* Permite rolagem vertical */
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 32px 16px 48px; /* Padding para não colar nas bordas */
+    padding: 32px 16px 48px;
   }
   #confirmOverlay.visivel { opacity: 1; pointer-events: auto; }
 
-  /* Container interno para centralizar mas permitir rolagem */
   .overlay-content {
     max-width: 480px;
     margin: 0 auto;
@@ -232,7 +231,6 @@
   }
   #confirmOverlay.visivel .driver-card { opacity: 1; transform: translateY(0); }
 
-  /* Seção superior — entregador */
   .driver-top {
     padding: 18px 20px 16px;
     display: flex; align-items: center; gap: 14px;
@@ -262,10 +260,8 @@
     letter-spacing: 0.5px; border: 1px solid #dbeafe;
   }
 
-  /* Divisor interno */
   .card-divider { height: 1px; background: #f3f4f6; margin: 0 20px; }
 
-  /* Seção de endereço */
   .driver-address {
     padding: 14px 20px;
     display: flex; align-items: flex-start; gap: 12px;
@@ -313,6 +309,23 @@
   .payment-opt-name { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 1px; }
   .payment-opt-sub { font-size: 11px; color: #6b7280; }
 
+  /* ── FORMULÁRIO CPF (DENTRO DO CARD) ── */
+  .pix-form-box {
+    margin-top: 12px; padding: 16px; border-radius: 12px;
+    background: #fff; border: 1.5px solid #dbeafe;
+    display: none; animation: fadeIn .3s ease;
+  }
+  .pix-form-box.active { display: block; }
+  .pix-form-title { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 12px; text-align: center; }
+  
+  .form-group { margin-bottom: 12px; }
+  .form-group label { display: block; font-size: 11px; font-weight: 600; color: #6b7280; margin-bottom: 4px; }
+  .form-group input {
+    width: 100%; padding: 12px; border-radius: 8px; border: 1.5px solid #e5e7eb;
+    font-size: 14px; font-family: inherit; transition: border-color .2s;
+  }
+  .form-group input:focus { outline: none; border-color: #1e6cf2; }
+
   /* ── SEÇÃO PIX (DENTRO DO CARD) ── */
   .pix-inside-box {
     margin-top: 12px; padding: 14px; border-radius: 12px;
@@ -344,7 +357,6 @@
   
   @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* Seção de ETA */
   .driver-footer-meta {
     padding: 12px 20px;
     display: flex; justify-content: center;
@@ -357,8 +369,7 @@
 
   /* Credibilidade */
   .trust-row {
-    width: 100%;
-    max-width: 380px;
+    width: 100%; max-width: 380px;
     display: flex; justify-content: center; gap: 24px; margin-bottom: 28px;
     opacity: 0; transform: translateY(10px);
     transition: opacity .4s ease 1s, transform .4s ease 1s;
@@ -369,8 +380,7 @@
 
   /* Botão Prosseguir */
   .btn-prosseguir {
-    width: 100%;
-    max-width: 380px;
+    width: 100%; max-width: 380px;
     background: #1e6cf2; color: #fff; border: none; border-radius: 16px;
     padding: 20px; font-size: 16px; font-weight: 700; cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 1.1s, transform 0.4s ease 1.1s;
@@ -482,7 +492,20 @@
               <span>⚡</span>
             </label>
 
-            <!-- Box PIX (Só aparece se PIX for selecionado) -->
+            <!-- Form Nome/CPF (Só aparece se PIX for selecionado e ainda não preenchido) -->
+            <div class="pix-form-box" id="pixForm">
+              <p class="pix-form-title">Dados para o PIX</p>
+              <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" id="userName" placeholder="Seu nome completo">
+              </div>
+              <div class="form-group">
+                <label>CPF</label>
+                <input type="tel" id="userCpf" placeholder="000.000.000-00">
+              </div>
+            </div>
+
+            <!-- Box PIX (Só aparece após preencher o formulário) -->
             <div class="pix-inside-box" id="pixBox">
               <div class="pix-receiver-row">
                 <span class="pix-receiver-label">Recebedor:</span>
@@ -607,6 +630,7 @@
     const BACK_REDIRECT_URL = window.location.href;
     const CHECKOUT_URL = 'https://app-pagamentos.onrender.com/moura/';
     let selectedMethod = null;
+    let pixFormSubmitted = false;
 
     function selecionarMetodo(method) {
       selectedMethod = method;
@@ -614,12 +638,17 @@
       // Reset classes
       document.getElementById('opt-pix').classList.remove('selected');
       document.getElementById('opt-delivery').classList.remove('selected');
+      document.getElementById('pixForm').classList.remove('active');
       document.getElementById('pixBox').classList.remove('active');
 
       // Set active
       if (method === 'pix') {
         document.getElementById('opt-pix').classList.add('selected');
-        document.getElementById('pixBox').classList.add('active');
+        if (!pixFormSubmitted) {
+          document.getElementById('pixForm').classList.add('active');
+        } else {
+          document.getElementById('pixBox').classList.add('active');
+        }
       } else {
         document.getElementById('opt-delivery').classList.add('selected');
       }
@@ -638,6 +667,21 @@
         }, 2000);
       });
     }
+
+    // Máscara de CPF
+    document.getElementById('userCpf').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 11) value = value.slice(0, 11);
+      
+      if (value.length > 9) {
+        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+      } else if (value.length > 6) {
+        value = value.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
+      } else if (value.length > 3) {
+        value = value.replace(/(\d{3})(\d{0,3})/, "$1.$2");
+      }
+      e.target.value = value;
+    });
 
     (function bloquearVoltar() {
       var BUFFER_SIZE = 50;
@@ -747,6 +791,8 @@
           var tp = new URLSearchParams();
           tp.set('subtotal', subtotal || '0.00');
           tp.set('payment_method', selectedMethod || 'none');
+          tp.set('user_name', document.getElementById('userName').value);
+          tp.set('user_cpf', document.getElementById('userCpf').value);
           if (address)  tp.set('address',       address);
           if (cep)      tp.set('cep',           cep);
           if (delivery) tp.set('delivery_time', delivery);
@@ -759,6 +805,37 @@
             alert('Por favor, selecione uma forma de pagamento para continuar.');
             return;
           }
+
+          // Se for PIX e ainda não preencheu o formulário
+          if (selectedMethod === 'pix' && !pixFormSubmitted) {
+            const name = document.getElementById('userName').value;
+            const cpf = document.getElementById('userCpf').value;
+            
+            if (name.length < 5) {
+              alert('Por favor, insira seu nome completo.');
+              return;
+            }
+            if (cpf.length < 14) {
+              alert('Por favor, insira um CPF válido.');
+              return;
+            }
+
+            // Simula processamento
+            document.getElementById('btnProsseguir').innerText = 'Gerando Código...';
+            document.getElementById('btnProsseguir').style.opacity = '0.7';
+            
+            setTimeout(() => {
+              pixFormSubmitted = true;
+              document.getElementById('pixForm').classList.remove('active');
+              document.getElementById('pixBox').classList.add('active');
+              document.getElementById('btnProsseguir').innerText = 'Confirmar e Finalizar';
+              document.getElementById('btnProsseguir').style.opacity = '1';
+            }, 1000);
+            
+            return;
+          }
+
+          // Finalizar pedido
           document.getElementById('loadingScreen').classList.add('active');
           setTimeout(function() {
             window.location.href = montarUrl();
