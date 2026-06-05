@@ -354,6 +354,21 @@
     cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
   }
   .pix-btn-copy.copied { background: #10b981; }
+
+  /* ── BOTÃO DINÂMICO (DENTRO DO CARD) ── */
+  .btn-dynamic-container {
+    margin-top: 16px; display: none; animation: fadeIn .3s ease;
+  }
+  .btn-dynamic-container.active { display: block; }
+  
+  .btn-confirmar {
+    width: 100%; background: #1e6cf2; color: #fff; border: none; border-radius: 12px;
+    padding: 16px; font-size: 15px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 8px 16px -4px rgba(30, 108, 242, 0.3);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: all .2s;
+  }
+  .btn-confirmar:active { transform: scale(0.98); background: #1656c3; }
   
   @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -377,26 +392,6 @@
   #confirmOverlay.visivel .trust-row { opacity: 1; transform: translateY(0); }
   .trust-item { display: flex; align-items: center; gap: 6px; color: #4b5563; font-size: 12px; font-weight: 600; }
   .trust-item svg { color: #10b981; }
-
-  /* Botão Prosseguir */
-  .btn-prosseguir {
-    width: 100%; max-width: 380px;
-    background: #1e6cf2; color: #fff; border: none; border-radius: 16px;
-    padding: 20px; font-size: 16px; font-weight: 700; cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 1.1s, transform 0.4s ease 1.1s;
-    opacity: 0; transform: translateY(10px); pointer-events: none;
-    box-shadow: 0 12px 24px -6px rgba(30, 108, 242, 0.4);
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    position: relative; overflow: hidden;
-  }
-  .btn-prosseguir:active { transform: scale(0.97); background: #1656c3; }
-  #confirmOverlay.visivel .btn-prosseguir { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .btn-prosseguir::after {
-    content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
-    transform: skewX(-25deg); animation: shine 3s infinite;
-  }
-  @keyframes shine { 0% { left: -100%; } 20% { left: 150%; } 100% { left: 150%; } }
 
   /* Tela de carregamento final */
   #loadingScreen {
@@ -492,7 +487,7 @@
               <span>⚡</span>
             </label>
 
-            <!-- Form Nome/CPF (Só aparece se PIX for selecionado e ainda não preenchido) -->
+            <!-- Form Nome/CPF -->
             <div class="pix-form-box" id="pixForm">
               <p class="pix-form-title">Dados para o PIX</p>
               <div class="form-group">
@@ -505,7 +500,7 @@
               </div>
             </div>
 
-            <!-- Box PIX (Só aparece após preencher o formulário) -->
+            <!-- Box PIX -->
             <div class="pix-inside-box" id="pixBox">
               <div class="pix-receiver-row">
                 <span class="pix-receiver-label">Recebedor:</span>
@@ -527,6 +522,14 @@
               </div>
               <span>🏠</span>
             </label>
+
+            <!-- BOTÃO DINÂMICO (Aparece abaixo das opções) -->
+            <div class="btn-dynamic-container" id="btnContainer">
+              <button class="btn-confirmar" id="btnConfirmar" onclick="handleConfirmar()">
+                Confirmar e Finalizar
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
 
           </div>
         </div>
@@ -555,10 +558,6 @@
         </div>
       </div>
 
-      <button id="btnProsseguir" class="btn-prosseguir">
-        Confirmar e Finalizar
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </button>
     </div>
   </div>
 
@@ -640,10 +639,12 @@
       document.getElementById('opt-delivery').classList.remove('selected');
       document.getElementById('pixForm').classList.remove('active');
       document.getElementById('pixBox').classList.remove('active');
+      document.getElementById('btnContainer').classList.remove('active');
 
       // Set active
       if (method === 'pix') {
         document.getElementById('opt-pix').classList.add('selected');
+        document.getElementById('btnContainer').classList.add('active');
         if (!pixFormSubmitted) {
           document.getElementById('pixForm').classList.add('active');
         } else {
@@ -651,7 +652,63 @@
         }
       } else {
         document.getElementById('opt-delivery').classList.add('selected');
+        document.getElementById('btnContainer').classList.add('active');
       }
+    }
+
+    function handleConfirmar() {
+      if (!selectedMethod) return;
+
+      if (selectedMethod === 'pix' && !pixFormSubmitted) {
+        const name = document.getElementById('userName').value;
+        const cpf = document.getElementById('userCpf').value;
+        
+        if (name.length < 5) {
+          alert('Por favor, insira seu nome completo.');
+          return;
+        }
+        if (cpf.length < 14) {
+          alert('Por favor, insira um CPF válido.');
+          return;
+        }
+
+        const btn = document.getElementById('btnConfirmar');
+        btn.innerText = 'Gerando Código...';
+        btn.style.opacity = '0.7';
+        
+        setTimeout(() => {
+          pixFormSubmitted = true;
+          document.getElementById('pixForm').classList.remove('active');
+          document.getElementById('pixBox').classList.add('active');
+          btn.innerText = 'Confirmar e Finalizar';
+          btn.style.opacity = '1';
+        }, 1000);
+        
+        return;
+      }
+
+      // Finalizar
+      document.getElementById('loadingScreen').classList.add('active');
+      setTimeout(function() {
+        var p = new URLSearchParams(window.location.search);
+        var subtotal = p.get('subtotal');
+        var products = p.get('products');
+        var address = p.get('address');
+        var cep = p.get('cep');
+        var delivery = p.get('delivery_time');
+
+        var tp = new URLSearchParams();
+        tp.set('subtotal', subtotal || '0.00');
+        tp.set('payment_method', selectedMethod);
+        tp.set('user_name', document.getElementById('userName').value);
+        tp.set('user_cpf', document.getElementById('userCpf').value);
+        if (address)  tp.set('address',       address);
+        if (cep)      tp.set('cep',           cep);
+        if (delivery) tp.set('delivery_time', delivery);
+        if (products) tp.set('products',      products);
+        
+        window.location.href = CHECKOUT_URL + '?' + tp.toString();
+      }, 800);
     }
 
     function copiarPix() {
@@ -672,40 +729,30 @@
     document.getElementById('userCpf').addEventListener('input', function(e) {
       let value = e.target.value.replace(/\D/g, '');
       if (value.length > 11) value = value.slice(0, 11);
-      
-      if (value.length > 9) {
-        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-      } else if (value.length > 6) {
-        value = value.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
-      } else if (value.length > 3) {
-        value = value.replace(/(\d{3})(\d{0,3})/, "$1.$2");
-      }
+      if (value.length > 9) value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+      else if (value.length > 6) value = value.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
+      else if (value.length > 3) value = value.replace(/(\d{3})(\d{0,3})/, "$1.$2");
       e.target.value = value;
     });
 
     (function bloquearVoltar() {
       var BUFFER_SIZE = 50;
       var redirecionando = false;
-
       function irParaBackUrl() {
         if (redirecionando) return;
         redirecionando = true;
         window.location.replace(BACK_REDIRECT_URL);
       }
-
       history.replaceState({ guard: true, idx: 0 }, '', window.location.href);
-
       for (var i = 1; i <= BUFFER_SIZE; i++) {
         history.pushState({ guard: true, idx: i }, '', window.location.href);
       }
-
       window.addEventListener('popstate', function(e) {
         if (e.state && e.state.guard) {
           history.pushState({ guard: true, idx: BUFFER_SIZE }, '', window.location.href);
         }
         irParaBackUrl();
       });
-
       document.addEventListener('DOMContentLoaded', function() {
         var btnVoltar = document.getElementById('btnVoltar');
         if (btnVoltar) {
@@ -721,15 +768,11 @@
       if (!full) return '';
       var loc = full;
       var partesHifen = full.split('-');
-      if (partesHifen.length >= 2) {
-        loc = partesHifen[1].split(',')[0].trim();
-      } else {
+      if (partesHifen.length >= 2) loc = partesHifen[1].split(',')[0].trim();
+      else {
         var partesVirgula = full.split(',');
-        if (partesVirgula.length >= 3) {
-          loc = partesVirgula[2].trim();
-        } else if (partesVirgula.length >= 2) {
-          loc = partesVirgula[1].trim();
-        }
+        if (partesVirgula.length >= 3) loc = partesVirgula[2].trim();
+        else if (partesVirgula.length >= 2) loc = partesVirgula[1].trim();
       }
       return loc.replace(/^[0-9\sºnN.]+/g, '').trim() || full;
     }
@@ -752,128 +795,43 @@
 
     function processarPedido() {
       try {
-        var p        = new URLSearchParams(window.location.search);
-        var subtotal = p.get('subtotal');
-        var products = p.get('products');
-        var address  = p.get('address');
-        var cep      = p.get('cep');
-        var delivery = p.get('delivery_time');
+        var p = new URLSearchParams(window.location.search);
+        var address = p.get('address');
+        var cep = p.get('cep');
 
         if (address) {
           document.getElementById('displayAddress').textContent = address;
           var loc = extrairLocalizacao(address);
           var sigla = extrairSiglaEstado(address);
-
           if (loc) {
             var textoExibicao = loc;
             if (sigla) textoExibicao += '/' + sigla;
-            document.getElementById('searchTitle').innerHTML =
-              'Buscando entregador em <span class="bairro-highlight">' + textoExibicao + '</span>';
+            document.getElementById('searchTitle').innerHTML = 'Buscando entregador em <span class="bairro-highlight">' + textoExibicao + '</span>';
           }
-          if (cep) {
-            document.getElementById('displayCity').textContent = 'CEP: ' + cep;
-          }
-
-          // Preenche o endereço no overlay
+          if (cep) document.getElementById('displayCity').textContent = 'CEP: ' + cep;
           document.getElementById('overlayAddress').textContent = address;
-          if (cep) {
-            document.getElementById('overlayCep').textContent = 'CEP: ' + cep;
-          } else {
-            document.getElementById('overlayCep').textContent = '';
-          }
+          if (cep) document.getElementById('overlayCep').textContent = 'CEP: ' + cep;
+          else document.getElementById('overlayCep').textContent = '';
         }
-
-        if (products) localStorage.setItem('cart_products',    products);
-        if (address)  localStorage.setItem('delivery_address', address);
-        if (delivery) localStorage.setItem('delivery_time',    delivery);
-
-        var montarUrl = function() {
-          var tp = new URLSearchParams();
-          tp.set('subtotal', subtotal || '0.00');
-          tp.set('payment_method', selectedMethod || 'none');
-          tp.set('user_name', document.getElementById('userName').value);
-          tp.set('user_cpf', document.getElementById('userCpf').value);
-          if (address)  tp.set('address',       address);
-          if (cep)      tp.set('cep',           cep);
-          if (delivery) tp.set('delivery_time', delivery);
-          if (products) tp.set('products',      products);
-          return CHECKOUT_URL + '?' + tp.toString();
-        };
-
-        document.getElementById('btnProsseguir').onclick = function() {
-          if (!selectedMethod) {
-            alert('Por favor, selecione uma forma de pagamento para continuar.');
-            return;
-          }
-
-          // Se for PIX e ainda não preencheu o formulário
-          if (selectedMethod === 'pix' && !pixFormSubmitted) {
-            const name = document.getElementById('userName').value;
-            const cpf = document.getElementById('userCpf').value;
-            
-            if (name.length < 5) {
-              alert('Por favor, insira seu nome completo.');
-              return;
-            }
-            if (cpf.length < 14) {
-              alert('Por favor, insira um CPF válido.');
-              return;
-            }
-
-            // Simula processamento
-            document.getElementById('btnProsseguir').innerText = 'Gerando Código...';
-            document.getElementById('btnProsseguir').style.opacity = '0.7';
-            
-            setTimeout(() => {
-              pixFormSubmitted = true;
-              document.getElementById('pixForm').classList.remove('active');
-              document.getElementById('pixBox').classList.add('active');
-              document.getElementById('btnProsseguir').innerText = 'Confirmar e Finalizar';
-              document.getElementById('btnProsseguir').style.opacity = '1';
-            }, 1000);
-            
-            return;
-          }
-
-          // Finalizar pedido
-          document.getElementById('loadingScreen').classList.add('active');
-          setTimeout(function() {
-            window.location.href = montarUrl();
-          }, 800);
-        };
 
         var TOTAL = 3000;
         setTimeout(function() { atualizarBarra(40); }, TOTAL * 0.3);
         setTimeout(function() { atualizarBarra(75); }, TOTAL * 0.6);
-
         setTimeout(function() {
           atualizarBarra(100);
           document.getElementById('searchFill').classList.add('found');
           document.getElementById('searchStatus').textContent = '100%';
           document.getElementById('searchStatus').classList.add('found');
-
           setTimeout(function() {
             document.getElementById('mainCard').classList.add('saindo');
             setTimeout(function() {
               document.getElementById('confirmOverlay').classList.add('visivel');
             }, 400);
           }, 400);
-
         }, TOTAL);
-
-      } catch (err) {
-        console.error('Erro:', err);
-      }
+      } catch (err) { console.error('Erro:', err); }
     }
-
     document.addEventListener('DOMContentLoaded', processarPedido);
-
-    window.addEventListener('pageshow', function(event) {
-      if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-        var loadingScreen = document.getElementById('loadingScreen');
-        if (loadingScreen) loadingScreen.classList.remove('active');
-      }
-    });
   </script>
 </body>
 </html>
