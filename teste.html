@@ -145,20 +145,27 @@
 
   .footer-note { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 16px; }
 
-  /* ── Overlay de confirmação ── */
+  /* ── Overlay de confirmação (AJUSTADO PARA ROLAGEM) ── */
   #confirmOverlay {
     position: fixed; inset: 0;
     background: #fff;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 0;
     z-index: 9999;
     opacity: 0; pointer-events: none;
     transition: opacity .4s ease;
-    padding: 0 24px;
-    overflow-y: auto;
+    overflow-y: auto; /* Permite rolagem vertical */
+    -webkit-overflow-scrolling: touch;
+    padding: 32px 16px 48px; /* Padding para não colar nas bordas */
   }
   #confirmOverlay.visivel { opacity: 1; pointer-events: auto; }
+
+  /* Container interno para centralizar mas permitir rolagem */
+  .overlay-content {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   /* Logo DISKGAS */
   .overlay-logo {
@@ -167,7 +174,6 @@
     margin-bottom: 28px;
     opacity: 0;
     transition: opacity .4s ease .2s;
-    margin-top: 32px;
   }
   #confirmOverlay.visivel .overlay-logo { opacity: 1; }
 
@@ -211,12 +217,13 @@
   #confirmOverlay.visivel .ov-title,
   #confirmOverlay.visivel .ov-sub { opacity: 1; transform: translateY(0); }
 
-  /* ── Card do entregador (novo layout unificado) ── */
+  /* ── Card do entregador ── */
   .driver-card {
     background: #fff;
     border: 1.5px solid #eef2f6;
     border-radius: 20px;
-    width: min(360px, calc(100vw - 48px));
+    width: 100%;
+    max-width: 380px;
     overflow: hidden;
     margin-bottom: 20px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.04);
@@ -279,18 +286,7 @@
   }
   .addr-city { font-size: 12px; color: #6b7280; }
 
-  /* Seção de ETA */
-  .driver-footer-meta {
-    padding: 12px 20px;
-    display: flex; justify-content: center;
-  }
-  .driver-eta-box {
-    display: flex; align-items: center; gap: 6px;
-    color: #166534; font-size: 12px; font-weight: 700;
-    background: #f0fdf4; padding: 7px 16px; border-radius: 10px;
-  }
-
-  /* ── SEÇÃO DE PAGAMENTO (Dentro do Driver Card) ── */
+  /* ── SEÇÃO DE PAGAMENTO ── */
   .payment-options-container {
     padding: 16px 20px;
     background: #fafbfc;
@@ -348,9 +344,21 @@
   
   @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
+  /* Seção de ETA */
+  .driver-footer-meta {
+    padding: 12px 20px;
+    display: flex; justify-content: center;
+  }
+  .driver-eta-box {
+    display: flex; align-items: center; gap: 6px;
+    color: #166534; font-size: 12px; font-weight: 700;
+    background: #f0fdf4; padding: 7px 16px; border-radius: 10px;
+  }
+
   /* Credibilidade */
   .trust-row {
-    width: min(360px, calc(100vw - 48px));
+    width: 100%;
+    max-width: 380px;
     display: flex; justify-content: center; gap: 24px; margin-bottom: 28px;
     opacity: 0; transform: translateY(10px);
     transition: opacity .4s ease 1s, transform .4s ease 1s;
@@ -361,7 +369,8 @@
 
   /* Botão Prosseguir */
   .btn-prosseguir {
-    width: min(360px, calc(100vw - 48px));
+    width: 100%;
+    max-width: 380px;
     background: #1e6cf2; color: #fff; border: none; border-radius: 16px;
     padding: 20px; font-size: 16px; font-weight: 700; cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 1.1s, transform 0.4s ease 1.1s;
@@ -409,123 +418,125 @@
 
   <!-- Overlay de confirmação -->
   <div id="confirmOverlay">
-    <div class="overlay-logo">MOURA</div>
+    <div class="overlay-content">
+      <div class="overlay-logo">MOURA</div>
 
-    <div class="check-wrap">
-      <div class="check-bg">
-        <div class="check-inner">
-          <svg class="check-svg" viewBox="0 0 32 32">
-            <path class="check-path" d="M7 17 L13 23 L25 10"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <p class="ov-title">Entregador Autorizado!</p>
-    <p class="ov-sub">Seu pedido está pronto para envio</p>
-
-    <!-- Card unificado: entregador + endereço + ETA + PAGAMENTO -->
-    <div class="driver-card">
-
-      <!-- Bloco 1: Dados do entregador -->
-      <div class="driver-top">
-        <div class="driver-avatar-container">
-          <div class="driver-avatar"></div>
-          <div class="driver-badge-verified">✓</div>
-        </div>
-        <div class="driver-info">
-          <p class="driver-name-ov">Thiago Callegari</p>
-          <div class="driver-meta">
-            <span class="driver-rating">★ 4.9</span>
-            <span>·</span>
-            <span>1.647 entregas</span>
+      <div class="check-wrap">
+        <div class="check-bg">
+          <div class="check-inner">
+            <svg class="check-svg" viewBox="0 0 32 32">
+              <path class="check-path" d="M7 17 L13 23 L25 10"/>
+            </svg>
           </div>
         </div>
-        <span class="driver-badge-oficial">MOURA</span>
       </div>
 
-      <div class="card-divider"></div>
+      <p class="ov-title">Entregador Autorizado!</p>
+      <p class="ov-sub">Seu pedido está pronto para envio</p>
 
-      <!-- Bloco 2: Endereço de entrega -->
-      <div class="driver-address">
-        <div class="addr-icon-wrap">📍</div>
-        <div>
-          <p class="addr-label">Endereço de entrega</p>
-          <p class="addr-street" id="overlayAddress">Carregando...</p>
-          <p class="addr-city" id="overlayCep">—</p>
-        </div>
-      </div>
+      <!-- Card unificado: entregador + endereço + PAGAMENTO + ETA -->
+      <div class="driver-card">
 
-      <div class="card-divider"></div>
-
-      <!-- Bloco 3: Forma de Pagamento (NOVO) -->
-      <div class="payment-options-container">
-        <div class="payment-label-header">Forma de Pagamento</div>
-        <div class="payment-options-list">
-          
-          <label class="payment-opt" id="opt-pix">
-            <input type="radio" name="pay-method" value="pix" onchange="selecionarMetodo('pix')">
-            <div class="payment-opt-info">
-              <p class="payment-opt-name">Pagar Agora - PIX</p>
-              <p class="payment-opt-sub">Liberação imediata do pedido</p>
-            </div>
-            <span>⚡</span>
-          </label>
-
-          <!-- Box PIX (Só aparece se PIX for selecionado) -->
-          <div class="pix-inside-box" id="pixBox">
-            <div class="pix-receiver-row">
-              <span class="pix-receiver-label">Recebedor:</span>
-              <span class="pix-receiver-name">Thiago Callegari</span>
-            </div>
-            <div class="pix-copy-area">
-              <div class="pix-code-text" id="pixCode">00020126580014br.gov.bcb.pix0136xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx5204000053039865802BR5913THIAGO CALLEGARI6009SAO PAULO62410503***63041D3D</div>
-              <button class="pix-btn-copy" id="btnCopiarPix" onclick="copiarPix()">
-                <span>📋</span> Copiar Código PIX
-              </button>
+        <!-- Bloco 1: Dados do entregador -->
+        <div class="driver-top">
+          <div class="driver-avatar-container">
+            <div class="driver-avatar"></div>
+            <div class="driver-badge-verified">✓</div>
+          </div>
+          <div class="driver-info">
+            <p class="driver-name-ov">Thiago Callegari</p>
+            <div class="driver-meta">
+              <span class="driver-rating">★ 4.9</span>
+              <span>·</span>
+              <span>1.647 entregas</span>
             </div>
           </div>
+          <span class="driver-badge-oficial">MOURA</span>
+        </div>
 
-          <label class="payment-opt" id="opt-delivery">
-            <input type="radio" name="pay-method" value="delivery" onchange="selecionarMetodo('delivery')">
-            <div class="payment-opt-info">
-              <p class="payment-opt-name">Pagar na Entrega</p>
-              <p class="payment-opt-sub">Dinheiro ou cartão com Thiago</p>
+        <div class="card-divider"></div>
+
+        <!-- Bloco 2: Endereço de entrega -->
+        <div class="driver-address">
+          <div class="addr-icon-wrap">📍</div>
+          <div>
+            <p class="addr-label">Endereço de entrega</p>
+            <p class="addr-street" id="overlayAddress">Carregando...</p>
+            <p class="addr-city" id="overlayCep">—</p>
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <!-- Bloco 3: Forma de Pagamento -->
+        <div class="payment-options-container">
+          <div class="payment-label-header">Forma de Pagamento</div>
+          <div class="payment-options-list">
+            
+            <label class="payment-opt" id="opt-pix">
+              <input type="radio" name="pay-method" value="pix" onchange="selecionarMetodo('pix')">
+              <div class="payment-opt-info">
+                <p class="payment-opt-name">Pagar Agora - PIX</p>
+                <p class="payment-opt-sub">Liberação imediata do pedido</p>
+              </div>
+              <span>⚡</span>
+            </label>
+
+            <!-- Box PIX (Só aparece se PIX for selecionado) -->
+            <div class="pix-inside-box" id="pixBox">
+              <div class="pix-receiver-row">
+                <span class="pix-receiver-label">Recebedor:</span>
+                <span class="pix-receiver-name">Thiago Callegari</span>
+              </div>
+              <div class="pix-copy-area">
+                <div class="pix-code-text" id="pixCode">00020126580014br.gov.bcb.pix0136xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx5204000053039865802BR5913THIAGO CALLEGARI6009SAO PAULO62410503***63041D3D</div>
+                <button class="pix-btn-copy" id="btnCopiarPix" onclick="copiarPix()">
+                  <span>📋</span> Copiar Código PIX
+                </button>
+              </div>
             </div>
-            <span>🏠</span>
-          </label>
 
+            <label class="payment-opt" id="opt-delivery">
+              <input type="radio" name="pay-method" value="delivery" onchange="selecionarMetodo('delivery')">
+              <div class="payment-opt-info">
+                <p class="payment-opt-name">Pagar na Entrega</p>
+                <p class="payment-opt-sub">Dinheiro ou cartão com Thiago</p>
+              </div>
+              <span>🏠</span>
+            </label>
+
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <!-- Bloco 4: ETA -->
+        <div class="driver-footer-meta">
+          <div class="driver-eta-box">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Entrega em 20–30 minutos
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Credibilidade -->
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Pagamento Seguro
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Entrega Garantida
         </div>
       </div>
 
-      <div class="card-divider"></div>
-
-      <!-- Bloco 4: ETA -->
-      <div class="driver-footer-meta">
-        <div class="driver-eta-box">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          Entrega em 20–30 minutos
-        </div>
-      </div>
-
+      <button id="btnProsseguir" class="btn-prosseguir">
+        Confirmar e Finalizar
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
     </div>
-
-    <!-- Credibilidade -->
-    <div class="trust-row">
-      <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        Pagamento Seguro
-      </div>
-      <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        Entrega Garantida
-      </div>
-    </div>
-
-    <button id="btnProsseguir" class="btn-prosseguir">
-      Confirmar e Finalizar
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </button>
   </div>
 
   <div class="scroll-container">
