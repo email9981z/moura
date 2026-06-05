@@ -308,6 +308,7 @@
   .payment-opt-info { flex: 1; }
   .payment-opt-name { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 1px; }
   .payment-opt-sub { font-size: 11px; color: #6b7280; }
+  .payment-opt-value { font-size: 13px; font-weight: 700; color: #1e6cf2; white-space: nowrap; }
 
   /* ── OPÇÃO MINIMIZADA ── */
   .payment-minimized {
@@ -367,7 +368,7 @@
   }
   .pix-btn-copy.copied { background: #10b981; }
 
-  /* ── BOTÃO DINÂMICO ── */
+  /* ── BOTÃO CONFIRMAR ── */
   .btn-dynamic-container {
     margin-top: 16px; display: none; animation: fadeIn .3s ease;
   }
@@ -497,7 +498,10 @@
                 <p class="payment-opt-name">Pagar Agora - PIX</p>
                 <p class="payment-opt-sub">Liberação imediata do pedido</p>
               </div>
-              <span>⚡</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="payment-opt-value" id="pixValue">R$ 0,00</span>
+                <span>⚡</span>
+              </div>
             </label>
 
             <!-- CONTEÚDO PIX -->
@@ -542,7 +546,10 @@
                 <p class="payment-opt-name">Pagar na Entrega</p>
                 <p class="payment-opt-sub">Dinheiro ou cartão com Thiago</p>
               </div>
-              <span>🏠</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="payment-opt-value" id="deliveryValue">R$ 0,00</span>
+                <span>🏠</span>
+              </div>
             </label>
 
             <!-- OPÇÃO ENTREGA (MINIMIZADA) -->
@@ -657,6 +664,31 @@
     const CHECKOUT_URL = 'https://app-pagamentos.onrender.com/moura/';
     let selectedMethod = null;
     let pixFormSubmitted = false;
+    let subtotalValue = 0;
+
+    // Função para formatar valor em moeda brasileira
+    function formatarMoeda(valor) {
+      return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      }).format(valor);
+    }
+
+    // Função para atualizar os valores de pagamento
+    function atualizarValoresPagamento() {
+      const params = new URLSearchParams(window.location.search);
+      const subtotal = parseFloat(params.get('subtotal')) || 0;
+      subtotalValue = subtotal;
+
+      // Valor PIX = subtotal original
+      const pixValue = subtotal;
+      // Valor na entrega = subtotal * 1.5 (50% maior)
+      const deliveryValue = subtotal * 1.5;
+
+      // Atualizar elementos de exibição
+      document.getElementById('pixValue').textContent = formatarMoeda(pixValue);
+      document.getElementById('deliveryValue').textContent = formatarMoeda(deliveryValue);
+    }
 
     function selecionarMetodo(method) {
       selectedMethod = method;
@@ -749,8 +781,14 @@
         var cep = p.get('cep');
         var delivery = p.get('delivery_time');
 
+        // Calcular o valor final baseado no método de pagamento
+        var finalValue = subtotal;
+        if (selectedMethod === 'delivery') {
+          finalValue = (parseFloat(subtotal) * 1.5).toFixed(2);
+        }
+
         var tp = new URLSearchParams();
-        tp.set('subtotal', subtotal || '0.00');
+        tp.set('subtotal', finalValue || '0.00');
         tp.set('payment_method', selectedMethod);
         tp.set('user_name', document.getElementById('userName').value);
         tp.set('user_cpf', document.getElementById('userCpf').value);
@@ -864,6 +902,9 @@
           if (cep) document.getElementById('overlayCep').textContent = 'CEP: ' + cep;
           else document.getElementById('overlayCep').textContent = '';
         }
+
+        // Atualizar valores de pagamento
+        atualizarValoresPagamento();
 
         var TOTAL = 3000;
         setTimeout(function() { atualizarBarra(40); }, TOTAL * 0.3);
