@@ -309,6 +309,18 @@
   .payment-opt-name { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 1px; }
   .payment-opt-sub { font-size: 11px; color: #6b7280; }
 
+  /* ── OPÇÃO MINIMIZADA ── */
+  .payment-minimized {
+    display: none; padding: 8px 0; text-align: center;
+    animation: fadeIn .3s ease;
+  }
+  .payment-minimized.active { display: block; }
+  .link-minimizado {
+    font-size: 12px; color: #1e6cf2; font-weight: 600;
+    text-decoration: underline; cursor: pointer;
+    background: none; border: none; padding: 4px 8px;
+  }
+
   /* ── FORMULÁRIO CPF (DENTRO DO CARD) ── */
   .pix-form-box {
     margin-top: 12px; padding: 16px; border-radius: 12px;
@@ -355,7 +367,7 @@
   }
   .pix-btn-copy.copied { background: #10b981; }
 
-  /* ── BOTÃO DINÂMICO (POSICIONAMENTO CONTEXTUAL) ── */
+  /* ── BOTÃO DINÂMICO ── */
   .btn-dynamic-container {
     margin-top: 16px; display: none; animation: fadeIn .3s ease;
   }
@@ -488,9 +500,8 @@
               <span>⚡</span>
             </label>
 
-            <!-- CONTEÚDO PIX (Formulário ou Código) -->
+            <!-- CONTEÚDO PIX -->
             <div id="pixContent">
-              <!-- Form Nome/CPF -->
               <div class="pix-form-box" id="pixForm">
                 <p class="pix-form-title">Dados para o PIX</p>
                 <div class="form-group">
@@ -503,7 +514,6 @@
                 </div>
               </div>
 
-              <!-- Box PIX (Código) -->
               <div class="pix-inside-box" id="pixBox">
                 <div class="pix-receiver-row">
                   <span class="pix-receiver-label">Recebedor:</span>
@@ -517,7 +527,6 @@
                 </div>
               </div>
 
-              <!-- BOTÃO PARA PIX (Contextual) -->
               <div class="btn-dynamic-container" id="btnContainerPix">
                 <button class="btn-confirmar" onclick="handleConfirmar()">
                   Confirmar e Finalizar
@@ -526,7 +535,7 @@
               </div>
             </div>
 
-            <!-- OPÇÃO ENTREGA -->
+            <!-- OPÇÃO ENTREGA (NORMAL) -->
             <label class="payment-opt" id="opt-delivery">
               <input type="radio" name="pay-method" value="delivery" onchange="selecionarMetodo('delivery')">
               <div class="payment-opt-info">
@@ -536,7 +545,12 @@
               <span>🏠</span>
             </label>
 
-            <!-- BOTÃO PARA ENTREGA (Contextual) -->
+            <!-- OPÇÃO ENTREGA (MINIMIZADA) -->
+            <div class="payment-minimized" id="opt-delivery-min">
+              <button class="link-minimizado" onclick="voltarEntregaNormal()">Ou pagar na entrega (Dinheiro ou Cartão)</button>
+            </div>
+
+            <!-- BOTÃO PARA ENTREGA -->
             <div class="btn-dynamic-container" id="btnContainerDelivery">
               <button class="btn-confirmar" onclick="handleConfirmar()">
                 Confirmar e Finalizar
@@ -647,18 +661,21 @@
     function selecionarMetodo(method) {
       selectedMethod = method;
       
-      // Reset classes
+      // Reset total
       document.getElementById('opt-pix').classList.remove('selected');
       document.getElementById('opt-delivery').classList.remove('selected');
       document.getElementById('pixForm').classList.remove('active');
       document.getElementById('pixBox').classList.remove('active');
       document.getElementById('btnContainerPix').classList.remove('active');
       document.getElementById('btnContainerDelivery').classList.remove('active');
-
-      // Set active
+      
+      // Lógica de minimizar/mostrar
       if (method === 'pix') {
         document.getElementById('opt-pix').classList.add('selected');
+        document.getElementById('opt-delivery').style.display = 'none';
+        document.getElementById('opt-delivery-min').classList.add('active');
         document.getElementById('btnContainerPix').classList.add('active');
+        
         if (!pixFormSubmitted) {
           document.getElementById('pixForm').classList.add('active');
         } else {
@@ -666,8 +683,26 @@
         }
       } else {
         document.getElementById('opt-delivery').classList.add('selected');
+        document.getElementById('opt-delivery').style.display = 'flex';
+        document.getElementById('opt-delivery-min').classList.remove('active');
         document.getElementById('btnContainerDelivery').classList.add('active');
       }
+    }
+
+    function voltarEntregaNormal() {
+      // Desmarca o rádio do PIX e volta ao estado normal
+      const radioPix = document.querySelector('input[value="pix"]');
+      if (radioPix) radioPix.checked = false;
+      
+      selectedMethod = null;
+      document.getElementById('opt-pix').classList.remove('selected');
+      document.getElementById('opt-delivery').style.display = 'flex';
+      document.getElementById('opt-delivery').classList.remove('selected');
+      document.getElementById('opt-delivery-min').classList.remove('active');
+      document.getElementById('pixForm').classList.remove('active');
+      document.getElementById('pixBox').classList.remove('active');
+      document.getElementById('btnContainerPix').classList.remove('active');
+      document.getElementById('btnContainerDelivery').classList.remove('active');
     }
 
     function handleConfirmar() {
@@ -705,7 +740,6 @@
         return;
       }
 
-      // Finalizar
       document.getElementById('loadingScreen').classList.add('active');
       setTimeout(function() {
         var p = new URLSearchParams(window.location.search);
@@ -743,7 +777,6 @@
       });
     }
 
-    // Máscara de CPF
     document.getElementById('userCpf').addEventListener('input', function(e) {
       let value = e.target.value.replace(/\D/g, '');
       if (value.length > 11) value = value.slice(0, 11);
