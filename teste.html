@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -392,7 +393,7 @@ body {
 }
 
 /* Or delivery link */
-.or-delivery-row { text-align: center; padding: 6px 16px 14px; }
+.or-delivery-row { text-align: center; padding: 6px 16px 14px; display: none; }
 .or-delivery-row button {
   background: none; border: none; cursor: pointer; padding: 4px 8px;
   font-size: 12px; color: #9ca3af; text-decoration: underline; text-underline-offset: 2px;
@@ -585,7 +586,7 @@ body {
         <p class="pay-header">Forma de pagamento</p>
 
         <!-- Opção Pix -->
-        <div class="pay-option selected" id="opt-pix" onclick="selecionarMetodo('pix')">
+        <div class="pay-option" id="opt-pix" onclick="selecionarMetodo('pix')">
           <div class="pay-icon">⚡</div>
           <div class="pay-body">
             <p class="pay-name">Pagar agora — Pix</p>
@@ -596,7 +597,7 @@ body {
         </div>
 
         <!-- Conteúdo Pix expandido -->
-        <div class="pix-expand open" id="pixExpand">
+        <div class="pix-expand" id="pixExpand">
           <div class="pix-receiver-notice">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -632,11 +633,20 @@ body {
           </button>
         </div>
 
-        <!-- Link entrega discreta -->
-        <div class="or-delivery-row" id="orDeliveryRow">
+
           <button onclick="selecionarMetodo('delivery')">
             Ou pagar na entrega — <span id="deliveryValueLink">R$ 0,00</span>
           </button>
+        </div>
+
+        <!-- Opção Entrega (visível antes de selecionar Pix) -->
+        <div class="pay-option" id="opt-delivery" onclick="selecionarMetodo('delivery')">
+          <div class="pay-icon">🏠</div>
+          <div class="pay-body">
+            <p class="pay-name">Pagar na entrega</p>
+            <p class="pay-sub">Dinheiro ou cartão com Thiago</p>
+          </div>
+          <p class="pay-price" id="deliveryValue">R$ 0,00</p>
         </div>
 
       </div>
@@ -776,6 +786,7 @@ body {
     var deliveryValue = subtotal * 1.5;
 
     document.getElementById('pixValue').textContent = formatarMoeda(subtotal);
+    document.getElementById('deliveryValue').textContent = formatarMoeda(deliveryValue);
     document.getElementById('deliveryValueLink').textContent = formatarMoeda(deliveryValue);
     document.getElementById('modalPixVal').textContent = formatarMoeda(subtotal);
     document.getElementById('modalDeliveryVal').textContent = formatarMoeda(deliveryValue);
@@ -786,7 +797,9 @@ body {
 
   /* ── SELEÇÃO DE MÉTODO ── */
   function selecionarMetodo(method) {
-    if (method === 'delivery') {
+    if (method === 'pix') {
+      aplicarPix();
+    } else if (method === 'delivery') {
       abrirModalDelivery();
     }
   }
@@ -794,6 +807,8 @@ body {
   function aplicarPix() {
     document.getElementById('opt-pix').classList.add('selected');
     document.getElementById('pixExpand').classList.add('open');
+    // Esconde o card de entrega e mostra o link discreto
+    document.getElementById('opt-delivery').style.display = 'none';
     document.getElementById('orDeliveryRow').style.display = 'block';
   }
 
