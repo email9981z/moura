@@ -9,12 +9,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#241d18">
-  <meta name="description" content="Devocional do dia para começar sua rotina com propósito: 40 dias de busca pelo Senhor + Bíblia Explicada em uma biblioteca visual.">
-  <meta name="keywords" content="devocional do dia, devocional diário, devocional cristão, estudo bíblico, Bíblia explicada">
-  <meta property="og:title" content="Devocional do Dia — Comece sua jornada com propósito">
-  <meta property="og:description" content="Uma rotina de 40 dias para buscar o Senhor, com a Bíblia Explicada para aprofundar cada leitura.">
+  <meta name="description" content="Uma leitura devocional para cada dia do ano, com reflexão e direção para você voltar a ter constância na sua caminhada com Deus.">
+  <meta property="og:title" content="Devocional 365 Dias — Um próximo dia já preparado.">
+  <meta property="og:description" content="365 leituras guiadas para você ler, refletir e voltar amanhã sem depender da vontade do momento.">
   <meta property="og:type" content="website">
-  <title>Devocional do Dia — 40 Dias de Busca pelo Senhor | Bíblia Explicada</title>
+  <title>Devocional 365 Dias — Um próximo dia já preparado</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -133,27 +132,6 @@
     .trust-items { display: flex; flex-wrap: wrap; gap: 18px; color: var(--olive); font-size: .69rem; font-weight: 700; }
 
     .intro { background: var(--cream); }
-    .daily-rhythm { border-top: 1px solid var(--line); background: var(--paper); }
-    .daily-grid { display: grid; grid-template-columns: .68fr 1fr; align-items: end; gap: 70px; }
-    .daily-copy h2 { max-width: 540px; }
-    .daily-copy > p:last-of-type { max-width: 520px; font-size: .96rem; line-height: 1.7; }
-    .daily-cta-note { display: flex; align-items: center; gap: 10px; margin-top: 26px; color: var(--olive); font-size: .76rem; font-weight: 800; }
-    .daily-cta-note span { color: var(--amber); font-size: 1.1rem; }
-    .daily-steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-    .daily-step { min-height: 180px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 23px 20px; }
-    .daily-step strong { display: block; margin-bottom: 38px; color: var(--amber); font-family: var(--display); font-size: 2rem; line-height: .8; }
-    .daily-step h3 { margin-bottom: 8px; font-size: 1.5rem; }
-    .daily-step p { margin: 0; font-size: .76rem; line-height: 1.55; }
-    .pain-section { color: var(--white-ink); background: var(--espresso-2); overflow: hidden; }
-    .pain-section::before { position: absolute; inset: 0; background: radial-gradient(circle at 80% 35%, rgba(213,164,71,.14), transparent 31%), linear-gradient(135deg, rgba(48,36,28,.96), rgba(48,36,28,.86)); content: ""; }
-    .pain-grid { position: relative; display: grid; grid-template-columns: .72fr 1fr; align-items: center; gap: 85px; }
-    .pain-copy h2 { max-width: 560px; color: var(--white-ink); }
-    .pain-copy > p:not(.eyebrow) { max-width: 500px; color: #d5c6b3; font-size: .96rem; line-height: 1.7; }
-    .pain-cta { margin-top: 25px; }
-    .pain-list { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(222,211,194,.22); border-left: 1px solid rgba(222,211,194,.22); }
-    .pain-item { min-height: 145px; border-right: 1px solid rgba(222,211,194,.22); border-bottom: 1px solid rgba(222,211,194,.22); padding: 20px; }
-    .pain-item strong { display: block; margin-bottom: 22px; color: var(--amber); font-family: var(--display); font-size: 1.6rem; font-weight: 600; }
-    .pain-item p { margin: 0; color: #e7dccd; font-size: .8rem; line-height: 1.55; }
     .intro-grid { display: grid; grid-template-columns: minmax(180px,.31fr) minmax(0,1fr); gap: 50px; }
     .section-index { display: flex; flex-direction: column; gap: 13px; padding-top: 8px; color: var(--amber); font-family: var(--display); font-size: 2rem; line-height: 1; }
     .section-index small { color: var(--muted); font-family: var(--body); font-size: .67rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
@@ -307,14 +285,10 @@
       .hero-quote { flex-direction: column; gap: 5px; padding-bottom: 22px; font-size: .92rem; }
       .trust-strip .frame { align-items: flex-start; flex-direction: column; gap: 14px; padding: 21px 0; }
       .trust-items { gap: 9px 15px; }
-      .intro-grid, .daily-grid, .pain-grid, .study-grid, .guarantee-grid, .faq-grid { display: flex; flex-direction: column; align-items: stretch; gap: 30px; }
+      .intro-grid, .study-grid, .guarantee-grid, .faq-grid { display: flex; flex-direction: column; align-items: stretch; gap: 30px; }
       .section-index { flex-direction: row; align-items: baseline; gap: 10px; padding: 0; }
       .intro-content h2, .study-content h2 { font-size: clamp(2.75rem, 13vw, 4.1rem); }
       .large-copy { font-size: .96rem; }
-      .daily-steps { grid-template-columns: 1fr; }
-      .daily-step { min-height: 145px; }
-      .daily-step strong { margin-bottom: 22px; }
-      .pain-list { grid-template-columns: 1fr; }
       .split-heading { display: block; margin-bottom: 37px; }
       .split-heading > p { margin-top: 20px; }
       .feature-grid { grid-template-columns: 1fr; }
@@ -360,8 +334,8 @@
   <div class="urgency" role="status" aria-live="polite">
     <div class="frame">
       <span class="urgency-dot" aria-hidden="true"></span>
-      <span class="countdown"><span aria-hidden="true">◷</span> Campanha especial termina em <strong id="countdown">00:00:00</strong></span>
-      <span class="urgency-note">Acesso imediato após a confirmação</span>
+      <span>Devocional 365 Dias • acesso imediato após a confirmação</span>
+      <span class="urgency-note">Produto digital • garantia de 7 dias</span>
     </div>
   </div>
 
@@ -387,29 +361,29 @@
     <section class="hero" id="top">
       <div class="frame hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow light">PARA QUEM ESTÁ CANSADO DE COMEÇAR DE NOVO</p>
-          <h1>Você quer estudar a Bíblia, mas continua <em>sem saber por onde começar?</em></h1>
-          <p class="hero-lead">Se a correria, a culpa por parar e a dificuldade de entender o que você lê estão vencendo a sua intenção, o Devocional 40 Dias oferece um próximo passo claro — com a Bíblia Explicada para aprofundar sem se perder.</p>
+          <p class="eyebrow light">DEVOCIONAL DO DIA • 365 LEITURAS</p>
+          <h1>Você não precisa de mais uma promessa. Precisa de um próximo dia <em>já preparado.</em></h1>
+          <p class="hero-lead">O Devocional 365 Dias entrega uma leitura, uma reflexão e uma direção para cada dia — para você parar de depender da vontade e voltar a ter um momento com Deus.</p>
           <div class="hero-actions">
-            <a class="button button-primary" data-checkout data-cta="hero" href="#oferta">Quero sair da improvisação <span aria-hidden="true">↗</span></a>
-            <a class="text-link light-link" href="#rotina">Ver como funciona <span aria-hidden="true">↓</span></a>
+            <a class="button button-primary" data-checkout href="#oferta">Quero meu próximo dia <span aria-hidden="true">↗</span></a>
+            <a class="text-link light-link" href="#metodo">Ver como funciona <span aria-hidden="true">↓</span></a>
           </div>
           <div class="hero-trust" aria-label="Elementos de segurança">
-            <span>♢ Compra protegida</span>
+            <span>♢ Uma leitura por dia</span>
             <span>ϟ Acesso imediato</span>
-            <span>▣ Acesso vitalício</span>
+            <span>▣ Um ano de acesso</span>
           </div>
         </div>
 
         <div class="hero-product reveal reveal-delay">
-          <span class="chapter-tag">PRIMEIRO PASSO <span>•</span> DIA 01</span>
+          <span class="chapter-tag">CAPÍTULO 01 <span>•</span> VISÃO GERAL</span>
           <div class="hero-image-wrap">
             <img src="https://bibliaexplicada.netlify.app/assets/mokup%20(3)_1764297177798-CFbnVedc.webp" alt="Coleção Bíblia Explicada com livros de estudo e uma Bíblia aberta" width="600" height="750">
           </div>
           <div class="hero-price">
-            <span>Seu próximo passo</span>
+            <span>Seu próximo ano</span>
             <strong><small>por apenas</small> R$ 27<span>,00</span></strong>
-            <a data-checkout data-cta="hero-price" href="#oferta">Começar agora <span aria-hidden="true">↗</span></a>
+            <a data-checkout href="#oferta">Começar pela leitura de hoje <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </div>
@@ -418,8 +392,8 @@
 
     <section class="trust-strip" aria-label="Informações de confiança">
       <div class="frame">
-        <p><strong>Uma prática para voltar todos os dias.</strong> Comece pelo devocional e aprofunde na Bíblia quando quiser.</p>
-        <div class="trust-items"><span>⌑ Acesso imediato</span><span>◌ Leitura guiada</span><span>♢ 7 dias de garantia</span></div>
+        <p><strong>A sua rotina não precisa começar grande.</strong> Só precisa começar.</p>
+        <div class="trust-items"><span>⌑ Pagamento seguro</span><span>◌ Suporte no WhatsApp</span><span>♢ 7 dias de garantia</span></div>
       </div>
     </section>
 
@@ -427,33 +401,10 @@
       <div class="frame intro-grid">
         <div class="section-index">01 <small>O ponto de partida</small></div>
         <div class="intro-content">
-          <p class="eyebrow">A DOR NÃO É FALTA DE VONTADE</p>
-          <h2>Você só está tentando estudar sem um caminho pronto.</h2>
-          <p class="large-copy">Talvez você diga “amanhã eu começo”, abra a Bíblia e não saiba qual livro escolher, leia um versículo sem entender o contexto ou abandone a rotina depois de poucos dias. O Devocional 40 Dias transforma a intenção em uma sequência simples: abrir, ler, refletir e continuar.</p>
-          <div class="signature">Menos improviso. Mais um próximo passo possível.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section pain-section" id="dor">
-      <div class="frame pain-grid">
-        <div class="pain-copy"><p class="eyebrow light">TALVEZ VOCÊ SE RECONHEÇA</p><h2>O que mais pesa não é o dia perdido. É continuar adiando.</h2><p>Você não precisa de mais uma cobrança. Precisa de uma estrutura que tire a dúvida do “o que eu leio hoje?” e facilite o começo.</p><a class="button button-primary pain-cta" data-checkout data-cta="pain" href="#oferta">Quero um caminho para hoje <span aria-hidden="true">↗</span></a></div>
-        <div class="pain-list" aria-label="Dores que a oferta ajuda a organizar"><article class="pain-item"><strong>01</strong><p>Você quer ter constância, mas sempre acaba deixando para amanhã.</p></article><article class="pain-item"><strong>02</strong><p>Você lê, mas sente que não consegue entender ou aplicar o que leu.</p></article><article class="pain-item"><strong>03</strong><p>Você abre a Bíblia sem direção e perde tempo escolhendo por onde começar.</p></article><article class="pain-item"><strong>04</strong><p>Você gostaria de estudar mais, mas a rotina parece grande demais.</p></article></div>
-      </div>
-    </section>
-
-    <section class="section daily-rhythm" id="rotina">
-      <div class="frame daily-grid">
-        <div class="daily-copy">
-          <p class="eyebrow">COMO USAR NO SEU DIA</p>
-          <h2>Em poucos minutos, você sabe por onde começar.</h2>
-          <p>Não é uma promessa de resolver tudo em uma leitura. É um ponto de partida claro para criar presença, reflexão e continuidade na sua caminhada.</p>
-          <p class="daily-cta-note"><span>✦</span> A oferta completa inclui o devocional de 40 dias + a coleção Bíblia Explicada.</p>
-        </div>
-        <div class="daily-steps" aria-label="Rotina de uso do devocional">
-          <article class="daily-step"><strong>01</strong><h3>Leia</h3><p>Abra a reflexão do dia e reserve alguns minutos sem pressa.</p></article>
-          <article class="daily-step"><strong>02</strong><h3>Reflita</h3><p>Conecte a mensagem com a sua vida, suas perguntas e sua oração.</p></article>
-          <article class="daily-step"><strong>03</strong><h3>Continue</h3><p>Volte amanhã e use a Bíblia Explicada quando quiser ir além.</p></article>
+          <p class="eyebrow">O PROBLEMA NÃO É FALTA DE FÉ</p>
+          <h2>É abrir a Bíblia e não saber o que fazer com o tempo que você tem.</h2>
+          <p class="large-copy">Você quer buscar mais, mas a correria decide por você. Quando percebe, passou uma semana, a intenção ficou para depois e recomeçar parece cada vez mais pesado. O Devocional 365 Dias tira uma decisão do caminho: você abre a leitura do dia e sabe por onde começar.</p>
+          <div class="signature">Menos decisão. Mais presença.</div>
         </div>
       </div>
     </section>
@@ -461,14 +412,14 @@
     <section class="section method" id="metodo">
       <div class="frame">
         <div class="section-heading split-heading">
-          <div><p class="eyebrow">DO DEVOCIONAL À COMPREENSÃO</p><h2>O que muda quando você tem um guia ao lado.</h2></div>
-          <p>O devocional ajuda você a começar. A coleção completa ajuda a entender o contexto e continuar estudando.</p>
+          <div><p class="eyebrow">O QUE ACONTECE DEPOIS DE COMEÇAR</p><h2>Você sabe o que ler. Sabe o que refletir. Sabe por onde continuar.</h2></div>
+          <p>O método não exige uma rotina perfeita. Ele organiza o próximo passo para que você consiga voltar mesmo nos dias em que o tempo é curto.</p>
         </div>
         <div class="feature-grid">
-          <article class="feature-card"><div class="feature-top"><span>01</span><span aria-hidden="true">⌖</span></div><h3>Contexto para não se perder</h3><p>Entenda o cenário, a mensagem e os principais acontecimentos de cada livro com uma leitura guiada.</p><span class="feature-rule"></span></article>
-          <article class="feature-card"><div class="feature-top"><span>02</span><span aria-hidden="true">◫</span></div><h3>Explicação em camadas</h3><p>Comece pelo essencial ou aprofunde-se nos detalhes quando quiser estudar com mais tempo.</p><span class="feature-rule"></span></article>
-          <article class="feature-card"><div class="feature-top"><span>03</span><span aria-hidden="true">✦</span></div><h3>Linguagem que aproxima</h3><p>Um material visual e didático, pensado para transformar passagens difíceis em aprendizados claros.</p><span class="feature-rule"></span></article>
-          <article class="feature-card"><div class="feature-top"><span>04</span><span aria-hidden="true">✧</span></div><h3>Aplicação no cotidiano</h3><p>Conecte o que você lê com seus estudos, devocionais, aulas e conversas sobre a Palavra.</p><span class="feature-rule"></span></article>
+          <article class="feature-card"><div class="feature-top"><span>01</span><span aria-hidden="true">⌖</span></div><h3>Uma leitura para cada dia</h3><p>Você não precisa escolher um tema ou decidir por onde começar: o próximo dia já está organizado.</p><span class="feature-rule"></span></article>
+          <article class="feature-card"><div class="feature-top"><span>02</span><span aria-hidden="true">◫</span></div><h3>Um ano sem recomeçar do zero</h3><p>A sequência de 365 dias dá continuidade para transformar intenção em uma prática que cabe na vida real.</p><span class="feature-rule"></span></article>
+          <article class="feature-card"><div class="feature-top"><span>03</span><span aria-hidden="true">✦</span></div><h3>Reflexões para levar com você</h3><p>Leia, reflita e carregue uma ideia para a oração, para a família e para as decisões do dia.</p><span class="feature-rule"></span></article>
+          <article class="feature-card"><div class="feature-top"><span>04</span><span aria-hidden="true">✧</span></div><h3>Acesso para voltar sempre</h3><p>Retome os dias anteriores quando precisar reorganizar a rotina, sem transformar a pausa em culpa.</p><span class="feature-rule"></span></article>
         </div>
       </div>
     </section>
@@ -477,15 +428,15 @@
       <div class="frame study-grid">
         <div class="study-image"><img src="https://i.ibb.co/jPSFHPpj/2-min.png" alt="Bíblia de estudo aberta com marcadores e anotações" loading="lazy" width="700" height="700"><span class="image-caption">Uma página de cada vez.</span></div>
         <div class="study-content">
-          <p class="eyebrow light">FEITO PARA O SEU RITMO</p>
-          <h2>Um material para consultar, marcar e revisitar.</h2>
-          <p>Use nas suas leituras pessoais, na preparação de uma aula ou naquela dúvida que volta depois de um tempo. A estrutura foi pensada para sair do “eu deveria estudar mais” e chegar ao “agora eu sei por onde continuar”.</p>
+          <p class="eyebrow light">FEITO PARA CABER NA VIDA REAL</p>
+          <h2>Um material para abrir pela manhã e levar para o dia.</h2>
+          <p>Use no celular ou computador, em casa ou em qualquer intervalo possível. A estrutura foi pensada para tirar você do “eu deveria começar” e levar ao “eu já comecei hoje”.</p>
           <ul class="check-list">
-            <li>✓ Organização por livros e períodos bíblicos</li>
-            <li>✓ Explicações com linguagem direta e visual</li>
+            <li>✓ 365 leituras organizadas por dia</li>
+            <li>✓ Reflexões para oração e continuidade</li>
             <li>✓ Consulta prática em casa, na igreja ou em viagem</li>
           </ul>
-          <a class="text-link light-link" href="#bonus">Conhecer a coleção completa <span aria-hidden="true">↗</span></a>
+          <a class="text-link light-link" href="#bonus">Ver o que acompanha o devocional <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
@@ -493,9 +444,9 @@
     <section class="section bonuses" id="bonus">
       <div class="frame">
         <div class="center-heading">
-          <p class="eyebrow">ALÉM DO MATERIAL PRINCIPAL</p>
-          <h2>Mais caminhos para aprofundar o que você aprende.</h2>
-          <p>Na oferta completa, você também recebe uma biblioteca de apoio para devocionais, preparação e revisão.</p>
+          <p class="eyebrow">O QUE ACOMPANHA O SEU ANO</p>
+          <h2>Mais apoio para continuar quando a motivação baixar.</h2>
+          <p>Além das 365 leituras, você recebe materiais complementares para retomar a rotina, aprofundar a reflexão e não deixar um dia difícil encerrar o seu caminho.</p>
         </div>
         <div class="bonus-grid">
           <article class="bonus-card"><div class="bonus-cover"><span>40</span><small>BÔNUS</small><strong>Dias de busca pelo Senhor</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 01</p><h3>Devocional de 40 dias</h3><p>Uma sequência de leituras para criar constância.</p></div></article>
@@ -505,34 +456,26 @@
           <article class="bonus-card"><div class="bonus-cover"><span>31</span><small>BÔNUS</small><strong>Provérbios explicados</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 05</p><h3>31 Provérbios</h3><p>Sabedoria prática organizada para a vida real.</p></div></article>
           <article class="bonus-card"><div class="bonus-cover"><span>100</span><small>BÔNUS</small><strong>Novo Testamento</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 06</p><h3>100 versículos do NT</h3><p>Contexto para compreender os ensinamentos de Jesus.</p></div></article>
         </div>
-        <div class="bonus-more"><span aria-hidden="true">✦</span><strong>+ outros materiais complementares</strong><span>Incluídos no plano completo conforme a campanha vigente.</span></div>
+        <div class="bonus-more"><span aria-hidden="true">✦</span><strong>+ materiais complementares</strong><span>Incluídos no único produto apresentado nesta página.</span></div>
       </div>
     </section>
 
     <section class="section offer" id="oferta">
       <div class="frame">
         <div class="offer-heading">
-          <p class="eyebrow light">ESCOLHA O SEU PRÓXIMO PASSO</p>
-          <h2>Pare de colecionar intenções. <em>Comece uma rotina possível.</em></h2>
-          <p>Se você chegou procurando uma leitura para hoje, o plano essencial dá o primeiro passo. O plano completo reúne a rotina de 40 dias e a biblioteca para entender o que você lê.</p>
+          <p class="eyebrow light">UMA DECISÃO SIMPLES PARA COMEÇAR HOJE</p>
+          <h2>Um ano inteiro de leituras para você não precisar <em>adiar de novo.</em></h2>
+          <p>Você não precisa comparar vários produtos. Existe um único caminho: uma leitura para cada dia, acesso vitalício e liberdade para seguir no seu ritmo.</p>
         </div>
-        <div class="plans">
-          <article class="plan plan-basic">
-            <p class="plan-label">Para começar hoje</p>
-            <h3>Devocional do Dia</h3>
-            <p>O Devocional 40 Dias de Busca pelo Senhor para criar uma rotina simples de leitura e reflexão.</p>
-            <div class="plan-price"><del>R$ 97</del><strong>R$ 10<span>,00</span></strong></div>
-            <ul class="plan-list"><li>✓ Devocional de 40 dias</li><li>✓ Acesso vitalício</li><li>✓ Entrega digital imediata</li></ul>
-            <a class="button button-outline button-full" data-checkout data-cta="devotional-plan" href="#oferta">Quero começar hoje <span aria-hidden="true">↗</span></a>
-          </article>
+        <div class="plans single-plan">
           <article class="plan plan-complete">
-            <div class="popular">✦ MAIS ESCOLHIDO</div>
-            <p class="plan-label">Para continuar e aprofundar</p>
-            <h3>Plano Completo</h3>
-            <p>O Devocional 40 Dias + os 66 livros da Bíblia explicados e bônus para transformar sua rotina em estudo com contexto.</p>
-            <div class="plan-price"><del>de R$ 197</del><strong>R$ 27<span>,00</span></strong><small>ou 3x de R$ 10,32</small></div>
-            <ul class="plan-list"><li>✓ Devocional de 40 dias</li><li>✓ Os 66 livros explicados</li><li>✓ 10 bônus de estudo</li><li>✓ Acesso vitalício e atualizações</li><li>✓ Suporte prioritário no WhatsApp</li></ul>
-            <a class="button button-primary button-full" data-checkout data-cta="complete-plan" href="#oferta">Quero o devocional + Bíblia completa <span aria-hidden="true">↗</span></a>
+            <div class="popular">✦ PRODUTO ÚNICO</div>
+            <p class="plan-label">Devocional 365 Dias</p>
+            <h3>Um lugar para começar e voltar</h3>
+            <p>Para quem quer transformar o desejo de uma vida espiritual mais presente em uma prática diária possível, sem depender de uma rotina perfeita.</p>
+            <div class="plan-price"><strong>R$ 27<span>,00</span></strong><small>acesso vitalício • pagamento único</small></div>
+            <ul class="plan-list"><li>✓ 365 leituras devocionais guiadas</li><li>✓ Uma sequência pronta para cada dia do ano</li><li>✓ Reflexões para leitura, oração e continuidade</li><li>✓ Acesso vitalício pelo celular ou computador</li><li>✓ 7 dias de garantia para conhecer o material</li></ul>
+            <a class="button button-primary button-full" data-checkout href="#oferta">Quero começar pela leitura de hoje <span aria-hidden="true">↗</span></a>
             <div class="plan-safe">⌑ Compra protegida no checkout</div>
           </article>
         </div>
@@ -542,30 +485,30 @@
     <section class="section guarantee" id="garantia">
       <div class="frame guarantee-grid">
         <div class="seal" aria-label="Garantia de 7 dias"><span aria-hidden="true">♢</span><strong>7</strong><small>DIAS</small></div>
-        <div><p class="eyebrow">UMA DECISÃO SEM PESO</p><h2>Você pode olhar com calma.</h2><p>Seu acesso está protegido por uma garantia de 7 dias. Conheça o material, veja se ele acompanha a sua forma de estudar e, se não fizer sentido, consulte as condições de reembolso no checkout.</p></div>
+        <div><p class="eyebrow">VOCÊ NÃO PRECISA DECIDIR NO ESCURO</p><h2>Conheça primeiro. Decida com tranquilidade.</h2><p>Seu acesso está protegido por uma garantia de 7 dias. Veja como o material funciona, confira se ele cabe na sua rotina e consulte as condições de reembolso no checkout.</p></div>
         <a class="text-link" data-checkout href="#oferta">Ver condições da oferta <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <section class="section faq" id="faq">
       <div class="frame faq-grid">
-        <div class="faq-intro"><p class="eyebrow">AINDA TEM ALGUMA DÚVIDA?</p><h2>Resposta clara antes de começar.</h2><p>Se você pesquisou “devocional do dia”, esta oferta é para começar uma rotina guiada e, se quiser, aprofundar na Bíblia completa.</p><a class="text-link" data-support href="#oferta">Falar com o suporte <span aria-hidden="true">↗</span></a></div>
+        <div class="faq-intro"><p class="eyebrow">AINDA TEM ALGUMA DÚVIDA?</p><h2>Resposta clara antes do seu primeiro dia.</h2><p>Veja as respostas para as dúvidas que mais costumam adiar o começo.</p><a class="text-link" data-support href="#oferta">Ver o Devocional 365 Dias <span aria-hidden="true">↗</span></a></div>
         <div class="faq-list">
           <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Como vou receber o material?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Após a confirmação do pagamento, o acesso é enviado para o e-mail e para o WhatsApp cadastrados no checkout. Confira também a caixa de spam e as abas promocionais.</p></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>O acesso é vitalício?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Sim. A proposta da oferta é permitir que você consulte o material sem mensalidade, no seu ritmo e sempre que precisar voltar a um livro ou tema.</p></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Preciso ter conhecimento teológico?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Não. A experiência foi pensada para quem está começando e também para quem já estuda, com uma linguagem progressiva e visual.</p></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Quais são as formas de pagamento?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>As opções disponíveis aparecem com segurança no checkout. O plano completo pode ser apresentado à vista ou parcelado, conforme as condições vigentes da campanha.</p></div></div>
-          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>E se eu mudar de ideia?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>A oferta informa garantia de 7 dias. Se o conteúdo não fizer sentido para você, consulte as condições no checkout e solicite o reembolso dentro do prazo.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Preciso ler exatamente todos os dias?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Não. A sequência existe para orientar, não para criar culpa. Se você perder um dia, pode retomar de onde parou e seguir no seu ritmo.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Quanto tempo preciso reservar?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>A proposta é começar com alguns minutos de leitura e reflexão. Você pode aprofundar quando tiver mais tempo, sem transformar o devocional em mais uma tarefa impossível.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Como recebo o acesso?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Após a confirmação do pagamento, o acesso é enviado para o e-mail e para o WhatsApp cadastrados no checkout. Confira também a caixa de spam e as abas promocionais.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>E se eu perder alguns dias?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Você não precisa começar tudo de novo. Retome o próximo dia disponível e use o acesso vitalício para revisitar o que ficou para trás.</p></div></div>
         </div>
       </div>
     </section>
 
     <section class="final-cta">
       <div class="frame final-content">
-        <p class="eyebrow light">NÃO PRECISA ESPERAR A PRÓXIMA SEGUNDA-FEIRA</p>
-        <h2>O seu próximo passo pode ser pequeno — mas pode ser hoje.</h2>
-        <p>Comece com 40 dias de leituras guiadas. Depois, aprofunde cada tema com a coleção Bíblia Explicada.</p>
-        <a class="button button-primary" data-checkout data-cta="final" href="#oferta">Quero começar hoje <span aria-hidden="true">↗</span></a>
+        <p class="eyebrow light">O PRIMEIRO DIA PODE SER HOJE</p>
+        <h2>Você não precisa fazer tudo. Só precisa abrir o primeiro dia.</h2>
+        <p>Reserve alguns minutos, leia a reflexão de hoje e deixe que o próximo passo seja pequeno o bastante para acontecer.</p>
+        <a class="button button-primary" data-checkout href="#oferta">Quero abrir o primeiro dia <span aria-hidden="true">↗</span></a>
         <div class="final-notes"><span>♢ Garantia de 7 dias</span><span>⌑ Pagamento seguro</span><span>ϟ Acesso imediato</span></div>
       </div>
     </section>
@@ -574,55 +517,33 @@
   <footer class="footer">
     <div class="frame footer-main">
       <a class="brand" href="#top" aria-label="Voltar ao início"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 8h8l3 3 3-3h8v16h-8l-3-3-3 3H5z" fill="currentColor"></path><path d="M16 11v10" stroke="#241d18" stroke-width="1.4"></path></svg></span><span class="brand-copy"><strong>BÍBLIA</strong><em>EXPLICADA</em></span></a>
-      <p>Um guia visual para ler com contexto, clareza e constância.</p>
+      <p>Uma leitura para cada dia, com espaço para voltar, refletir e continuar.</p>
       <small>© 2026 Bíblia Explicada</small>
     </div>
     <div class="frame disclaimer">Antes de publicar, confirme preços, prazos, depoimentos, números e condições comerciais com o proprietário do produto. Esta página não inventa avaliações nem prova social.</div>
   </footer>
 
-  <a class="mobile-cta" data-checkout data-cta="mobile" href="#oferta"><span><small>Saia da improvisação</small>Começar por R$ 10,00</span><span aria-hidden="true">↗</span></a>
+  <a class="mobile-cta" data-checkout href="#oferta"><span><small>Devocional do dia</small>Abrir o primeiro dia • R$ 27,00</span><span aria-hidden="true">↗</span></a>
 
   <script>
     /* Direção visual: Editorial Sacro Contemporâneo — interações curtas, clareza e redução de fricção. */
     const CONFIG = {
       // Troque apenas estes valores antes de publicar.
-      checkoutUrl: "https://www.ggcheckout.com/checkout/v5/tPv3WNraAtNGZqQMEjEB",
-      supportUrl: "https://wa.me/5500000000000?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20devocional%20do%20dia",
-      campaignEnd: "2026-08-14T00:00:00-03:00",
-      utm: {
-        source: "google",
-        medium: "cpc",
-        campaign: "devocional-do-dia",
-        content: "landing-page",
-        term: "devocional-do-dia"
-      }
-    };
-
-    const buildCheckoutUrl = () => {
-      const url = new URL(CONFIG.checkoutUrl, window.location.href);
-      const query = new URLSearchParams(window.location.search);
-      Object.entries(CONFIG.utm).forEach(([key, value]) => url.searchParams.set(`utm_${key}`, query.get(`utm_${key}`) || value));
-      return url.toString();
-    };
-
-    const track = (eventName, params = {}) => {
-      if (typeof window.gtag === "function") window.gtag("event", eventName, params);
-      if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: eventName, ...params });
+      checkoutUrl: "https://www.ggcheckout.com/checkout/v5/tPv3WNraAtNGZqQMEjEB?utm_source=google&utm_medium=cpc&utm_campaign=devocional-365-dias&utm_content=landing-page&utm_term=devocional-do-dia",
+      supportUrl: "https://wa.me/5500000000000?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20Devocional%20365%20Dias"
     };
 
     const checkoutLinks = document.querySelectorAll("[data-checkout]");
     checkoutLinks.forEach((link) => {
-      link.setAttribute("href", buildCheckoutUrl());
+      link.setAttribute("href", CONFIG.checkoutUrl);
       link.setAttribute("target", "_blank");
       link.setAttribute("rel", "noopener noreferrer");
-      link.addEventListener("click", () => track("select_offer", { cta_location: link.dataset.cta || "navigation", offer: link.dataset.cta === "devotional-plan" ? "devotional" : "complete" }));
     });
 
     document.querySelectorAll("[data-support]").forEach((link) => {
       link.setAttribute("href", CONFIG.supportUrl);
       link.setAttribute("target", "_blank");
       link.setAttribute("rel", "noopener noreferrer");
-      link.addEventListener("click", () => track("select_support", { location: "faq" }));
     });
 
     const menuToggle = document.getElementById("menuToggle");
@@ -654,22 +575,6 @@
       });
     });
 
-    const countdown = document.getElementById("countdown");
-    const target = new Date(CONFIG.campaignEnd).getTime();
-    const pad = (number) => String(number).padStart(2, "0");
-    const updateCountdown = () => {
-      const remaining = Math.max(0, target - Date.now());
-      const totalSeconds = Math.floor(remaining / 1000);
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-      countdown.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-      if (remaining === 0) {
-        document.querySelector(".urgency-note").textContent = "Consulte a disponibilidade atual no checkout";
-      }
-    };
-    updateCountdown();
-    window.setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
