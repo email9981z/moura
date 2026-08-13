@@ -130,6 +130,15 @@
     .trust-strip p { margin: 0; font-size: .81rem; }
     .trust-strip p strong { color: var(--espresso); }
     .trust-items { display: flex; flex-wrap: wrap; gap: 18px; color: var(--olive); font-size: .69rem; font-weight: 700; }
+    .sales-bar { border-bottom: 1px solid var(--line); background: var(--paper); }
+    .sales-bar-grid { display: grid; grid-template-columns: 1.5fr .45fr .45fr .65fr auto; align-items: center; gap: 20px; min-height: 108px; }
+    .sales-bar-lead { display: flex; flex-direction: column; gap: 4px; }
+    .sales-kicker { color: var(--olive); font-size: .65rem; font-weight: 800; letter-spacing: .16em; }
+    .sales-bar-lead strong { color: var(--espresso); font-family: var(--display); font-size: 1.65rem; line-height: 1; }
+    .sales-fact { display: flex; flex-direction: column; gap: 1px; border-left: 1px solid var(--line); padding-left: 18px; }
+    .sales-fact strong { color: var(--amber); font-family: var(--display); font-size: 1.75rem; line-height: .95; }
+    .sales-fact span { color: var(--muted); font-size: .66rem; font-weight: 800; text-transform: uppercase; }
+    .sales-bar .button { min-height: 48px; padding-inline: 18px; white-space: nowrap; }
 
     .intro { background: var(--cream); }
     .intro-grid { display: grid; grid-template-columns: minmax(180px,.31fr) minmax(0,1fr); gap: 50px; }
@@ -196,6 +205,8 @@
     .offer-heading h2 { margin-bottom: 17px; color: var(--white-ink); }
     .offer-heading > p:last-child { max-width: 540px; color: #cdbca7; font-size: .95rem; }
     .plans { position: relative; display: grid; grid-template-columns: .74fr 1fr; align-items: stretch; gap: 17px; max-width: 950px; margin: 0 auto; }
+    .single-plan { display: flex; justify-content: center; }
+    .single-plan .plan-complete { width: min(100%, 680px); }
     .plan { position: relative; display: flex; flex-direction: column; padding: 31px 30px 26px; }
     .plan-basic { border: 1px solid rgba(222,211,194,.26); background: rgba(255,250,240,.03); }
     .plan-complete { border: 1px solid var(--amber); color: var(--espresso); background: var(--white-ink); box-shadow: 0 25px 55px rgba(0,0,0,.25); }
@@ -287,6 +298,14 @@
       .hero-quote { flex-direction: column; gap: 5px; padding-bottom: 22px; font-size: .92rem; }
       .trust-strip .frame { align-items: flex-start; flex-direction: column; gap: 14px; padding: 21px 0; }
       .trust-items { gap: 9px 15px; }
+      .sales-bar-grid { grid-template-columns: repeat(3, 1fr); gap: 0; min-height: unset; padding: 23px 0 20px; }
+      .sales-bar-lead { grid-column: 1 / -1; margin-bottom: 19px; }
+      .sales-bar-lead strong { font-size: 1.55rem; }
+      .sales-fact { min-height: 46px; padding-left: 11px; }
+      .sales-fact:first-of-type { padding-left: 0; border-left: 0; }
+      .sales-fact strong { font-size: 1.45rem; }
+      .sales-fact span { font-size: .58rem; }
+      .sales-bar .button { grid-column: 1 / -1; width: 100%; margin-top: 20px; }
       .intro-grid, .study-grid, .guarantee-grid, .faq-grid { display: flex; flex-direction: column; align-items: stretch; gap: 30px; }
       .section-index { flex-direction: row; align-items: baseline; gap: 10px; padding: 0; }
       .intro-content h2, .study-content h2 { font-size: clamp(2.75rem, 13vw, 4.1rem); }
@@ -304,6 +323,7 @@
       .bonus-more span { width: 100%; margin-left: 29px; }
       .offer-heading h2 { font-size: clamp(2.75rem, 13vw, 3.5rem); }
       .plans { grid-template-columns: 1fr; gap: 24px; }
+      .single-plan { display: block; }
       .plan-complete { order: -1; }
       .plan { padding: 24px 18px 21px; }
       .plan h3 { font-size: 2rem; }
@@ -398,6 +418,16 @@
       <div class="frame">
         <p><strong>A sua rotina não precisa começar grande.</strong> Só precisa começar.</p>
         <div class="trust-items"><span>⌑ Pagamento seguro</span><span>◌ Suporte no WhatsApp</span><span>♢ 7 dias de garantia</span></div>
+      </div>
+    </section>
+
+    <section class="sales-bar" aria-label="Resumo da oferta">
+      <div class="frame sales-bar-grid">
+        <div class="sales-bar-lead"><span class="sales-kicker">DEVOCIONAL 365 DIAS</span><strong>O caminho já está organizado.</strong></div>
+        <div class="sales-fact"><strong>365</strong><span>leituras</span></div>
+        <div class="sales-fact"><strong>1</strong><span>produto</span></div>
+        <div class="sales-fact"><strong>R$ 27</strong><span>pagamento único</span></div>
+        <a class="button button-primary" data-checkout href="#oferta">Quero começar <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
