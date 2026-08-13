@@ -1,971 +1,605 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Devocional Diário 2026 — 3 minutos com Deus antes de começar o dia</title>
-<meta name="description" content="365 devocionais curtos com versículo-chave, reflexão prática e oração guiada. Leve para o celular em 1 clique." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --ink:#16223B;
-    --ink-soft:#253656;
-    --paper:#F6EEDD;
-    --paper-soft:#FCF8EE;
-    --paper-card:#FFFDF7;
-    --text:#241C15;
-    --text-soft:#5B4E3E;
-    --gold:#D79C46;
-    --gold-deep:#B97C2E;
-    --sage:#3F6B52;
-    --sage-deep:#2A4A38;
-    --sage-light:#6FA383;
-    --brick:#9C4A2E;
-    --line: rgba(36,28,21,0.12);
-    --shadow-paper: 0 1px 0 rgba(36,28,21,0.06), 0 10px 24px -14px rgba(22,34,59,0.35), 0 24px 40px -30px rgba(22,34,59,0.25);
-    --radius: 18px;
-    --display: 'Fraunces', Georgia, serif;
-    --body: 'Inter', -apple-system, sans-serif;
-    --mono: 'IBM Plex Mono', ui-monospace, monospace;
-  }
+  <!--
+    BÍBLIA EXPLICADA — ARQUIVO ÚNICO
+    Para personalizar antes de publicar, edite o objeto CONFIG no final deste arquivo.
+    Direção visual: Editorial Sacro Contemporâneo.
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#241d18">
+  <meta name="description" content="Entenda os 66 livros da Bíblia com contexto, clareza e um guia visual para estudar no seu ritmo.">
+  <meta property="og:title" content="Bíblia Explicada — Pare de apenas ler. Comece a entender.">
+  <meta property="og:description" content="Um guia visual de estudo bíblico para ler com mais contexto, clareza e constância.">
+  <meta property="og:type" content="website">
+  <title>Bíblia Explicada — Entenda as Escrituras com clareza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23241d18'/%3E%3Cpath d='M5 8h8l3 3 3-3h8v16h-8l-3-3-3 3H5z' fill='%23d5a447'/%3E%3C/svg%3E" type="image/svg+xml">
+  <style>
+    /* Direção visual: Editorial Sacro Contemporâneo — espresso, creme, âmbar e composição de mesa de estudo. */
+    :root {
+      --espresso: #241d18;
+      --espresso-2: #30241c;
+      --amber: #d5a447;
+      --amber-light: #e5bb65;
+      --cream: #f7f2e9;
+      --paper: #fffdf8;
+      --parchment: #ede4d5;
+      --olive: #65705b;
+      --ink: #241d18;
+      --muted: #76695d;
+      --line: #dfd3c2;
+      --white-ink: #fffaf0;
+      --display: "Cormorant Garamond", Georgia, serif;
+      --body: "DM Sans", Arial, sans-serif;
+      --ease: cubic-bezier(.23,1,.32,1);
+      --shadow: 0 22px 55px rgba(36, 29, 24, .16);
+    }
 
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
-  }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--cream); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid var(--amber-light); outline-offset: 4px; }
+    ::selection { color: var(--espresso); background: var(--amber); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip-link { position: fixed; z-index: 100; top: 8px; left: 8px; padding: 10px 14px; color: var(--espresso); background: var(--amber); transform: translateY(-150%); transition: transform .2s ease; }
+    .skip-link:focus { transform: translateY(0); }
+    .frame { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    .section { position: relative; padding: 112px 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 20px; color: var(--olive); font-size: .72rem; font-weight: 800; letter-spacing: .17em; line-height: 1.2; text-transform: uppercase; }
+    .eyebrow::before { width: 28px; height: 1px; background: var(--amber); content: ""; }
+    .eyebrow.light { color: #d9cdbb; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.025em; }
+    h1, h2 { line-height: .94; }
+    h1 { color: var(--white-ink); font-size: clamp(3.6rem, 7vw, 6.4rem); }
+    h2 { margin-bottom: 22px; color: var(--espresso); font-size: clamp(2.8rem, 5.2vw, 4.8rem); }
+    h1 em, h2 em { color: var(--amber); font-style: normal; }
+    h3 { color: var(--espresso); font-size: 1.7rem; line-height: 1.05; }
+    p { color: var(--muted); }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; border: 1px solid transparent; padding: 0 25px; font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; transition: transform .16s var(--ease), background .16s ease, color .16s ease, box-shadow .16s ease; }
+    .button:hover { transform: translateY(-3px); }
+    .button:active { transform: scale(.97); }
+    .button-primary { color: var(--espresso); background: var(--amber); box-shadow: 0 14px 28px rgba(213,164,71,.22); }
+    .button-primary:hover { background: var(--amber-light); box-shadow: 0 18px 35px rgba(213,164,71,.32); }
+    .button-outline { border-color: var(--line); color: var(--espresso); background: transparent; }
+    .button-outline:hover { border-color: var(--espresso); color: var(--white-ink); background: var(--espresso); }
+    .button-full { width: 100%; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; border: 0; padding: 0; color: var(--espresso); background: transparent; font-size: .83rem; font-weight: 800; text-decoration: none; transition: gap .16s var(--ease), color .16s ease; }
+    .text-link:hover { gap: 12px; color: var(--amber); }
+    .light-link { color: var(--white-ink); }
 
-  body{
-    font-family: var(--body);
-    color: var(--text);
-    background: var(--paper);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
+    .urgency { min-height: 34px; color: var(--espresso); background: var(--amber); }
+    .urgency .frame { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 34px; font-size: .7rem; font-weight: 800; }
+    .urgency-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--espresso); box-shadow: 0 0 0 4px rgba(36,29,24,.1); }
+    .countdown { display: inline-flex; align-items: center; gap: 7px; letter-spacing: .02em; }
+    .countdown strong { min-width: 61px; letter-spacing: .08em; }
+    .urgency-note { opacity: .58; }
 
-  img,svg{ display:block; max-width:100%; }
-  a{ color:inherit; text-decoration:none; }
-  ul{ list-style:none; }
-  button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+    .header { position: relative; z-index: 30; color: var(--white-ink); background: var(--espresso); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; border: 0; padding: 0; color: var(--white-ink); background: transparent; text-align: left; }
+    .brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid rgba(213,164,71,.7); }
+    .brand-mark img, .brand-mark svg { width: 24px; height: 24px; object-fit: contain; color: var(--amber); }
+    .brand-copy { display: flex; flex-direction: column; gap: 0; line-height: .87; }
+    .brand-copy strong, .brand-copy em { font-family: var(--display); font-size: 1.14rem; letter-spacing: .11em; }
+    .brand-copy strong { font-weight: 700; }
+    .brand-copy em { color: var(--amber); font-size: .72rem; font-style: normal; letter-spacing: .27em; }
+    .nav { display: flex; align-items: center; gap: 28px; }
+    .nav a, .nav button { border: 0; padding: 10px 0; color: #ded3c2; background: transparent; font-size: .76rem; font-weight: 700; text-decoration: none; transition: color .16s ease; }
+    .nav a:hover, .nav button:hover { color: var(--amber); }
+    .nav .nav-cta { display: inline-flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--amber); color: var(--white-ink); }
+    .menu-toggle { display: none; border: 0; padding: 8px; color: var(--white-ink); background: transparent; }
 
-  :focus-visible{
-    outline: 3px solid var(--gold);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
+    .hero { position: relative; isolation: isolate; color: var(--white-ink); background: var(--espresso); overflow: hidden; }
+    .hero::before { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(36,29,24,.99) 0%, rgba(36,29,24,.83) 43%, rgba(36,29,24,.34) 100%), url("/manus-storage/biblia-explicada-editorial_a801740b.png") center/cover; content: ""; }
+    .hero::after { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, transparent 55%, var(--espresso) 100%); content: ""; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(420px, .8fr); align-items: center; gap: 70px; min-height: 645px; padding: 78px 0 56px; }
+    .hero-copy { max-width: 640px; }
+    .hero-copy h1 { max-width: 690px; margin-bottom: 24px; }
+    .hero-lead { max-width: 560px; margin-bottom: 30px; color: #ded3c2; font-size: 1.06rem; line-height: 1.65; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px; color: #c7bbaa; font-size: .71rem; }
+    .hero-trust span, .trust-items span, .final-notes span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-trust svg, .trust-items svg, .final-notes svg { color: var(--amber); }
+    .hero-product { position: relative; justify-self: end; width: min(100%, 480px); min-height: 560px; }
+    .chapter-tag { position: absolute; z-index: 2; top: 26px; left: -16px; padding: 8px 12px; color: var(--espresso); background: var(--amber); font-size: .61rem; font-weight: 800; letter-spacing: .13em; }
+    .chapter-tag span { padding: 0 5px; opacity: .45; }
+    .hero-image-wrap { position: relative; display: flex; align-items: center; justify-content: center; height: 520px; }
+    .hero-image-wrap::before { position: absolute; width: 74%; height: 74%; border: 1px solid rgba(213,164,71,.28); background: rgba(255,253,248,.04); transform: rotate(7deg); content: ""; }
+    .hero-image-wrap img { position: relative; z-index: 1; width: 86%; height: 100%; object-fit: contain; filter: drop-shadow(22px 28px 18px rgba(0,0,0,.35)); }
+    .hero-price { position: absolute; z-index: 3; right: -11px; bottom: 15px; display: flex; flex-direction: column; min-width: 180px; padding: 17px 18px 15px; color: var(--espresso); background: var(--white-ink); box-shadow: 0 18px 30px rgba(0,0,0,.24); }
+    .hero-price span { color: var(--muted); font-size: .63rem; font-weight: 800; text-transform: uppercase; }
+    .hero-price strong { display: flex; align-items: baseline; gap: 7px; margin: 4px 0 7px; font-family: var(--display); font-size: 2.4rem; line-height: .95; }
+    .hero-price strong small { font-family: var(--body); font-size: .62rem; font-weight: 700; }
+    .hero-price strong span { font-size: 1.35rem; }
+    .hero-price a { display: inline-flex; align-items: center; gap: 6px; color: var(--olive); font-size: .7rem; font-weight: 800; text-decoration: none; }
+    .hero-quote { display: flex; align-items: center; justify-content: center; gap: 16px; padding-bottom: 31px; color: #baa993; font-family: var(--display); font-size: 1rem; }
+    .hero-quote em { color: var(--amber); font-family: var(--body); font-size: .7rem; font-style: normal; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 
-  .wrap{
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+    .trust-strip { border-bottom: 1px solid var(--line); background: var(--paper); }
+    .trust-strip .frame { display: flex; align-items: center; justify-content: space-between; gap: 25px; min-height: 84px; }
+    .trust-strip p { margin: 0; font-size: .81rem; }
+    .trust-strip p strong { color: var(--espresso); }
+    .trust-items { display: flex; flex-wrap: wrap; gap: 18px; color: var(--olive); font-size: .69rem; font-weight: 700; }
 
-  .eyebrow{
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight:600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
+    .intro { background: var(--cream); }
+    .intro-grid { display: grid; grid-template-columns: minmax(180px,.31fr) minmax(0,1fr); gap: 50px; }
+    .section-index { display: flex; flex-direction: column; gap: 13px; padding-top: 8px; color: var(--amber); font-family: var(--display); font-size: 2rem; line-height: 1; }
+    .section-index small { color: var(--muted); font-family: var(--body); font-size: .67rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .intro-content { max-width: 800px; }
+    .intro-content h2 { max-width: 780px; }
+    .large-copy { max-width: 700px; margin-bottom: 32px; font-size: 1.06rem; line-height: 1.78; }
+    .signature { display: flex; align-items: center; gap: 14px; color: var(--espresso); font-family: var(--display); font-size: 1.23rem; }
+    .signature::before { width: 58px; height: 1px; background: var(--amber); content: ""; }
 
-  h1,h2,h3{ font-family: var(--display); font-weight:600; letter-spacing:-0.01em; }
+    .method { background: var(--parchment); }
+    .section-heading { margin-bottom: 50px; }
+    .split-heading { display: grid; grid-template-columns: 1fr .55fr; align-items: end; gap: 70px; }
+    .split-heading h2 { max-width: 720px; margin-bottom: 0; }
+    .split-heading > p { max-width: 335px; margin: 0 0 5px; font-size: .91rem; line-height: 1.65; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #d4c6b2; border-left: 1px solid #d4c6b2; }
+    .feature-card { display: flex; flex-direction: column; min-height: 270px; border-right: 1px solid #d4c6b2; border-bottom: 1px solid #d4c6b2; padding: 27px 24px 22px; transition: background .18s ease, transform .18s var(--ease); }
+    .feature-card:hover { background: rgba(255,253,248,.54); transform: translateY(-5px); }
+    .feature-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 45px; color: var(--amber); }
+    .feature-top span { font-size: .66rem; font-weight: 800; letter-spacing: .16em; }
+    .feature-card h3 { max-width: 195px; margin-bottom: 12px; font-size: 1.55rem; }
+    .feature-card p { margin-bottom: 18px; font-size: .82rem; line-height: 1.6; }
+    .feature-rule { width: 26px; height: 2px; margin-top: auto; background: var(--amber); }
 
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding: 17px 30px;
-    border-radius: 999px;
-    font-weight:700;
-    font-size: 16px;
-    line-height:1;
-    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    text-align:center;
-  }
-  .btn-primary{
-    background: var(--sage);
-    color: #FBF8F0;
-    box-shadow: 0 14px 26px -12px rgba(42,74,56,0.55);
-  }
-  .btn-primary:hover{ background: var(--sage-deep); transform: translateY(-2px); box-shadow: 0 18px 30px -12px rgba(42,74,56,0.6); }
-  .btn-ghost{
-    background: transparent;
-    border: 1.5px solid rgba(251,248,240,0.5);
-    color: #FBF8F0;
-  }
-  .btn-ghost:hover{ background: rgba(251,248,240,0.12); }
-  .btn-block{ width:100%; }
+    .study { color: var(--white-ink); background: var(--espresso-2); overflow: hidden; }
+    .study::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(48,36,28,.12), rgba(48,36,28,.9)), url("/manus-storage/biblia-explicada-editorial_a801740b.png") center/cover; content: ""; opacity: .19; }
+    .study-grid { position: relative; display: grid; grid-template-columns: .88fr 1fr; align-items: center; gap: 90px; }
+    .study-image { position: relative; max-width: 450px; }
+    .study-image img { width: 100%; aspect-ratio: 1; object-fit: cover; filter: saturate(.75); }
+    .image-caption { position: absolute; right: -34px; bottom: 25px; padding: 10px 13px; color: var(--espresso); background: var(--amber); font-family: var(--display); font-size: 1.2rem; font-style: italic; }
+    .study-content { max-width: 560px; }
+    .study-content h2 { color: var(--white-ink); }
+    .study-content > p { color: #cfc1af; font-size: .98rem; line-height: 1.7; }
+    .check-list, .plan-list { display: flex; flex-direction: column; gap: 12px; margin: 26px 0 29px; padding: 0; list-style: none; }
+    .check-list li, .plan-list li { display: flex; align-items: flex-start; gap: 9px; font-size: .82rem; }
+    .check-list li { color: #efe7da; }
+    .check-list svg, .plan-list svg { flex: 0 0 auto; margin-top: 3px; color: var(--amber); }
 
-  /* ---------- torn paper divider ---------- */
-  .torn{ display:block; width:100%; height:34px; }
-  .torn.to-paper{ color: var(--paper); }
-  .torn.to-sage{ color: var(--sage-deep); }
-  .torn.to-paper-soft{ color: var(--paper-soft); }
-  .torn.to-ink{ color: var(--ink); }
+    .bonuses { background: var(--paper); }
+    .center-heading { max-width: 730px; margin: 0 auto 54px; text-align: center; }
+    .center-heading .eyebrow { justify-content: center; }
+    .center-heading > p:last-child { max-width: 550px; margin: 0 auto; font-size: .94rem; }
+    .bonus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .bonus-card { display: grid; grid-template-columns: 112px 1fr; min-height: 178px; border: 1px solid var(--line); background: #fbf7ef; transition: transform .18s var(--ease), box-shadow .18s ease; }
+    .bonus-card:hover { box-shadow: 0 14px 24px rgba(70,52,37,.09); transform: translateY(-4px); }
+    .bonus-cover { display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; padding: 12px; color: var(--white-ink); background: var(--espresso); }
+    .bonus-cover:nth-child(2n) { background: var(--olive); }
+    .bonus-card:nth-child(3n) .bonus-cover { background: #856744; }
+    .bonus-cover strong { font-family: var(--display); font-size: 1rem; line-height: .95; }
+    .bonus-cover small { color: var(--amber); font-size: .57rem; font-weight: 800; letter-spacing: .16em; }
+    .bonus-cover span { color: var(--amber); font-family: var(--display); font-size: 2rem; font-weight: 700; line-height: .85; }
+    .bonus-cover i { color: #cdbca7; font-size: .55rem; font-style: normal; }
+    .bonus-body { padding: 20px 16px; }
+    .bonus-number { margin-bottom: 12px; color: var(--amber); font-size: .61rem; font-weight: 800; letter-spacing: .13em; }
+    .bonus-body h3 { margin-bottom: 9px; font-size: 1.4rem; }
+    .bonus-body p:last-child { margin: 0; font-size: .75rem; line-height: 1.5; }
+    .bonus-more { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 34px; color: var(--olive); font-size: .78rem; }
+    .bonus-more span { color: var(--muted); }
 
-  /* ---------- top urgency banner ---------- */
-  .banner{
-    background: linear-gradient(90deg, var(--ink), var(--ink-soft));
-    color: var(--gold);
-    text-align:center;
-    padding: 10px 16px;
-    font-family: var(--mono);
-    font-size: 12.5px;
-    font-weight:600;
-    letter-spacing:0.02em;
-  }
-  .banner strong{ color:#F3D9A6; }
+    .offer { color: var(--white-ink); background: var(--espresso); overflow: hidden; }
+    .offer::before { position: absolute; inset: 0; background: radial-gradient(circle at 84% 37%, rgba(213,164,71,.16), transparent 29%), linear-gradient(120deg, rgba(36,29,24,.98), rgba(36,29,24,.88)); content: ""; }
+    .offer-heading { position: relative; max-width: 760px; margin-bottom: 54px; }
+    .offer-heading h2 { margin-bottom: 17px; color: var(--white-ink); }
+    .offer-heading > p:last-child { max-width: 540px; color: #cdbca7; font-size: .95rem; }
+    .plans { position: relative; display: grid; grid-template-columns: .74fr 1fr; align-items: stretch; gap: 17px; max-width: 950px; margin: 0 auto; }
+    .plan { position: relative; display: flex; flex-direction: column; padding: 31px 30px 26px; }
+    .plan-basic { border: 1px solid rgba(222,211,194,.26); background: rgba(255,250,240,.03); }
+    .plan-complete { border: 1px solid var(--amber); color: var(--espresso); background: var(--white-ink); box-shadow: 0 25px 55px rgba(0,0,0,.25); }
+    .popular { position: absolute; top: -13px; right: 24px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; color: var(--espresso); background: var(--amber); font-size: .62rem; font-weight: 800; letter-spacing: .1em; }
+    .plan-label { margin-bottom: 12px; color: var(--amber); font-size: .64rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .plan-complete .plan-label { color: var(--olive); }
+    .plan h3 { margin-bottom: 12px; color: inherit; font-size: 2.3rem; }
+    .plan > p { min-height: 72px; margin-bottom: 22px; color: #cdbca7; font-size: .83rem; line-height: 1.6; }
+    .plan-complete > p { color: var(--muted); }
+    .plan-price { display: flex; flex-direction: column; margin-bottom: 20px; }
+    .plan-price del { color: #a99680; font-size: .74rem; }
+    .plan-price strong { font-family: var(--display); font-size: 3.6rem; line-height: .9; }
+    .plan-price strong span { font-size: 1.9rem; }
+    .plan-price small { margin-top: 9px; color: var(--olive); font-size: .71rem; font-weight: 800; }
+    .plan-list { margin: 0 0 27px; }
+    .plan-list li { color: #efe7da; font-size: .78rem; }
+    .plan-complete .plan-list li { color: var(--espresso); }
+    .plan .button { margin-top: auto; }
+    .plan-safe { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 14px; color: var(--muted); font-size: .65rem; }
 
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    background: linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 34%, var(--gold-deep) 78%, var(--paper) 100%);
-    color: #FBF8F0;
-    padding: 56px 0 0;
-    overflow:hidden;
-  }
-  .hero-inner{
-    display:grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 56px;
-    align-items:center;
-    padding-bottom: 60px;
-  }
-  .hero-brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom: 34px;
-    opacity:0.9;
-  }
-  .hero-brand .mark{
-    width:30px; height:30px; border-radius:8px;
-    background: var(--gold);
-    display:flex; align-items:center; justify-content:center;
-    font-family: var(--display); font-weight:700; color: var(--ink); font-size:16px;
-  }
-  .hero-brand span{ font-family: var(--mono); font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:#EFE3C8; }
+    .guarantee { background: var(--paper); }
+    .guarantee-grid { display: grid; grid-template-columns: 140px 1fr auto; align-items: center; gap: 40px; max-width: 960px; }
+    .seal { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 130px; height: 130px; border: 1px solid var(--amber); border-radius: 50%; color: var(--olive); }
+    .seal svg { color: var(--amber); }
+    .seal strong { font-family: var(--display); font-size: 2.4rem; line-height: .82; }
+    .seal small { font-size: .58rem; font-weight: 800; letter-spacing: .17em; }
+    .guarantee-grid h2 { margin-bottom: 10px; font-size: 3.3rem; }
+    .guarantee-grid p:not(.eyebrow) { max-width: 575px; margin: 0; font-size: .84rem; line-height: 1.7; }
 
-  .hero-hook{
-    font-family: var(--display);
-    font-style: italic;
-    font-size: clamp(15px, 1.7vw, 18.5px);
-    color: #F3D9A6;
-    margin-bottom: 16px;
-    max-width: 44ch;
-  }
-  .hero .eyebrow{ color:#F3D9A6; margin-bottom:18px; }
-  .hero h1{
-    font-size: clamp(30px, 4.4vw, 46px);
-    line-height:1.12;
-    color:#FFFDF6;
-  }
-  .hero h1 em{ font-style: italic; color: var(--gold); }
-  .hero p.sub{
-    margin-top:20px;
-    font-size: clamp(16px, 1.7vw, 18.5px);
-    color: #EDE3D2;
-    max-width: 52ch;
-  }
-  .hero-ctas{ margin-top:30px; display:flex; flex-wrap:wrap; gap:14px; }
-  .hero-trust{
-    margin-top:22px;
-    display:flex; flex-direction:column; gap:6px;
-    font-size:13.5px; color:#E7DCC5;
-  }
-  .hero-micro{ margin-top:12px; font-size:13px; color:#D8CBAE; }
+    .faq { background: var(--cream); }
+    .faq-grid { display: grid; grid-template-columns: .7fr 1fr; gap: 110px; }
+    .faq-intro h2 { max-width: 360px; font-size: 3.8rem; }
+    .faq-intro > p:not(.eyebrow) { max-width: 320px; margin-bottom: 24px; font-size: .85rem; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 76px; border: 0; padding: 0; color: var(--espresso); background: transparent; font-family: var(--display); font-size: 1.45rem; font-weight: 600; text-align: left; }
+    .faq-question svg { color: var(--amber); transition: transform .18s var(--ease); }
+    .faq-item.open .faq-question svg { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .25s var(--ease); }
+    .faq-answer p { max-width: 610px; margin: 0 34px 22px 0; font-size: .83rem; line-height: 1.7; }
 
-  /* phone mockup / rotating devotional card — signature element */
-  .phone-stage{ position:relative; display:flex; justify-content:center; }
-  .phone{
-    position:relative;
-    width: min(300px, 78vw);
-    background: var(--ink);
-    border-radius: 38px;
-    padding: 14px;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
-  }
-  .phone-notch{
-    position:absolute; top:14px; left:50%; transform:translateX(-50%);
-    width:80px; height:18px; background: var(--ink); border-radius:0 0 14px 14px; z-index:3;
-  }
-  .phone-screen{
-    position:relative;
-    background: var(--paper-card);
-    border-radius: 26px;
-    padding: 30px 20px 22px;
-    min-height: 380px;
-    overflow:hidden;
-  }
-  .devo-card{
-    position:absolute; inset:30px 20px 22px;
-    opacity:0; transform: translateY(10px) rotate(0.4deg);
-    transition: opacity .55s ease, transform .55s ease;
-    display:flex; flex-direction:column;
-  }
-  .devo-card.active{ opacity:1; transform: translateY(0) rotate(0deg); position:relative; }
-  .devo-day{ font-family:var(--mono); font-size:11px; color:var(--sage-deep); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
-  .devo-title{ font-family:var(--display); font-size:21px; margin-top:6px; color:var(--text); }
-  .devo-verse{ font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-top:8px; }
-  .devo-essence{ font-size:13.5px; margin-top:12px; color:var(--text); font-style:italic; border-left:2px solid var(--gold); padding-left:10px; }
-  .devo-reflect{ font-size:13px; margin-top:12px; color:var(--text-soft); flex:1; }
-  .devo-prayer{ font-size:12.5px; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); color:var(--sage-deep); }
-  .devo-prayer b{ font-family:var(--mono); font-weight:600; }
+    .final-cta { position: relative; isolation: isolate; color: var(--white-ink); background: var(--espresso-2); text-align: center; overflow: hidden; }
+    .final-cta::before { position: absolute; z-index: -1; inset: 0; background: linear-gradient(rgba(48,36,28,.77), rgba(48,36,28,.93)), url("/manus-storage/biblia-explicada-editorial_a801740b.png") center/cover; content: ""; opacity: .85; }
+    .final-content { display: flex; flex-direction: column; align-items: center; padding: 120px 0 112px; }
+    .final-content .eyebrow { justify-content: center; }
+    .final-content h2 { max-width: 820px; margin-bottom: 18px; color: var(--white-ink); font-size: clamp(3rem, 6vw, 5.4rem); }
+    .final-content > p:not(.eyebrow) { max-width: 520px; margin-bottom: 30px; color: #d4c5b3; font-size: .97rem; }
+    .final-notes { display: flex; flex-wrap: wrap; justify-content: center; gap: 19px; margin-top: 25px; color: #cabba9; font-size: .69rem; }
+    .footer { color: #b9a793; background: #1b1511; }
+    .footer-main { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 100px; }
+    .footer p, .footer small { margin: 0; color: #9f8e7c; font-size: .71rem; }
+    .disclaimer { border-top: 1px solid rgba(214,197,173,.11); padding: 18px 0 20px; color: #776858; font-size: .64rem; line-height: 1.5; }
+    .mobile-cta { display: none; }
 
-  .phone-dots{ display:flex; justify-content:center; gap:7px; margin-top:16px; }
-  .phone-dots button{ width:7px; height:7px; border-radius:50%; background: rgba(255,255,255,0.28); transition: background .2s, transform .2s; }
-  .phone-dots button[aria-current="true"]{ background: var(--gold); transform: scale(1.25); }
-  .phone-nav{ position:absolute; top:50%; transform:translateY(-50%); display:flex; justify-content:space-between; width:100%; padding:0 -6px; }
-  .phone-arrow{
-    width:34px; height:34px; border-radius:50%;
-    background: rgba(22,34,59,0.55); color:#fff;
-    display:flex; align-items:center; justify-content:center; font-size:15px;
-  }
-  .phone-arrow:hover{ background: rgba(22,34,59,0.8); }
-  .phone-arrow.prev{ margin-left:-40px; }
-  .phone-arrow.next{ margin-right:-40px; }
-  .phone-caption{ text-align:center; margin-top:16px; font-size:12.5px; color:#E7DCC5; }
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr .78fr; gap: 28px; }
+      .hero-product { min-height: 500px; }
+      .hero-image-wrap { height: 455px; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .bonus-grid { grid-template-columns: repeat(2, 1fr); }
+      .faq-grid { gap: 55px; }
+    }
 
-  /* ---------- reveal on scroll ---------- */
-  .reveal{ opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-  .reveal.is-visible{ opacity:1; transform:none; }
+    @media (max-width: 720px) {
+      .frame { width: min(100% - 34px, 560px); }
+      .section { padding: 76px 0; }
+      .urgency .frame { justify-content: flex-start; gap: 7px; font-size: .64rem; }
+      .urgency-note { display: none; }
+      .header { position: sticky; top: 0; }
+      .header-inner { min-height: 67px; }
+      .nav { position: absolute; top: 67px; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 15px 17px 20px; border-top: 1px solid rgba(213,164,71,.2); background: var(--espresso); box-shadow: 0 20px 24px rgba(0,0,0,.2); }
+      .nav.open { display: flex; }
+      .nav a, .nav button { width: 100%; padding: 14px 4px; text-align: left; }
+      .nav .nav-cta { justify-content: space-between; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: 20px; min-height: unset; padding: 77px 0 37px; }
+      h1 { font-size: clamp(3.35rem, 16vw, 5rem); }
+      .hero-lead { font-size: .97rem; }
+      .hero-actions { align-items: stretch; flex-direction: column; gap: 17px; }
+      .hero-actions .button { width: 100%; }
+      .hero-actions .text-link { align-self: center; }
+      .hero-trust { gap: 10px; font-size: .65rem; }
+      .hero-product { align-self: center; width: min(100%, 395px); min-height: 420px; }
+      .hero-image-wrap { height: 395px; }
+      .hero-price { right: -3px; bottom: 4px; }
+      .chapter-tag { top: 12px; left: 0; }
+      .hero-quote { flex-direction: column; gap: 5px; padding-bottom: 22px; font-size: .92rem; }
+      .trust-strip .frame { align-items: flex-start; flex-direction: column; gap: 14px; padding: 21px 0; }
+      .trust-items { gap: 9px 15px; }
+      .intro-grid, .study-grid, .guarantee-grid, .faq-grid { display: flex; flex-direction: column; align-items: stretch; gap: 30px; }
+      .section-index { flex-direction: row; align-items: baseline; gap: 10px; padding: 0; }
+      .intro-content h2, .study-content h2 { font-size: clamp(2.75rem, 13vw, 4.1rem); }
+      .large-copy { font-size: .96rem; }
+      .split-heading { display: block; margin-bottom: 37px; }
+      .split-heading > p { margin-top: 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card { min-height: 215px; }
+      .feature-top { margin-bottom: 30px; }
+      .study-image { width: calc(100% - 15px); }
+      .image-caption { right: -15px; }
+      .study-content > p { font-size: .9rem; }
+      .bonus-grid { grid-template-columns: 1fr; }
+      .bonus-more { align-items: flex-start; flex-wrap: wrap; justify-content: flex-start; }
+      .bonus-more span { width: 100%; margin-left: 29px; }
+      .offer-heading h2 { font-size: 3.4rem; }
+      .plans { grid-template-columns: 1fr; gap: 35px; }
+      .plan-complete { order: -1; }
+      .plan { padding: 28px 22px 23px; }
+      .guarantee-grid { align-items: center; text-align: center; }
+      .guarantee-grid .eyebrow { justify-content: center; }
+      .guarantee-grid h2 { font-size: 3.1rem; }
+      .guarantee-grid .text-link { align-self: center; }
+      .faq-intro h2 { font-size: 3.3rem; }
+      .faq-intro > p:not(.eyebrow) { max-width: 400px; }
+      .faq-question { min-height: 70px; font-size: 1.25rem; }
+      .final-content { padding: 88px 0 107px; }
+      .final-content h2 { font-size: 3.6rem; }
+      .final-content .button { width: 100%; }
+      .final-notes { gap: 10px 14px; }
+      .footer-main { align-items: flex-start; flex-direction: column; justify-content: center; padding: 27px 0; }
+      .mobile-cta { position: fixed; z-index: 40; right: 12px; bottom: 12px; left: 12px; display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 59px; padding: 10px 16px; color: var(--espresso); background: var(--amber); box-shadow: 0 12px 30px rgba(0,0,0,.25); font-size: .79rem; font-weight: 800; text-decoration: none; }
+      .mobile-cta span { display: flex; flex-direction: column; line-height: 1.05; }
+      .mobile-cta small { margin-bottom: 3px; font-size: .57rem; letter-spacing: .11em; text-transform: uppercase; }
+    }
 
-  /* ---------- section shell ---------- */
-  section{ position:relative; }
-  .section-pad{ padding: 68px 0; }
-  .kicker{ text-align:center; }
-  .kicker .eyebrow{ color: var(--sage-deep); justify-content:center; display:flex; }
-  .kicker h2{ font-size: clamp(24px, 3vw, 32px); margin-top:10px; }
-  .kicker p{ margin-top:12px; color: var(--text-soft); max-width:58ch; margin-left:auto; margin-right:auto; }
-
-  /* ---------- empathy / identification ---------- */
-  .empathy{ background: var(--paper-soft); }
-  .checklist{ max-width:640px; margin:36px auto 0; display:flex; flex-direction:column; gap:12px; }
-  .checklist li{ display:flex; gap:12px; align-items:flex-start; background:var(--paper-card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; font-size:14.5px; color:var(--text); box-shadow: var(--shadow-paper); }
-  .checklist li .tick{ flex:none; width:22px; height:22px; border-radius:50%; background:var(--sage); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; margin-top:1px; }
-  .personas{ margin-top:28px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
-  .persona-chip{ font-family:var(--mono); font-size:12px; background:var(--paper-card); border:1px solid var(--line); border-radius:999px; padding:8px 14px; color:var(--text-soft); }
-  .empathy-close{ text-align:center; margin-top:26px; font-size:14.5px; color:var(--sage-deep); font-weight:600; max-width:52ch; margin-left:auto; margin-right:auto; }
-
-  /* ---------- vignette (dark, cinematic) ---------- */
-  .vignette{ background: var(--ink); color:#EDE3D2; }
-  .vignette .wrap{ max-width:760px; text-align:center; }
-  .vignette .eyebrow{ color:#F3D9A6; justify-content:center; display:flex; }
-  .vignette h2{ color:#FFFDF6; font-size: clamp(24px,3.4vw,34px); margin-top:10px; }
-  .diary-card{ margin-top:30px; background: rgba(255,255,255,0.04); border:1px solid rgba(244,239,225,0.16); border-radius: var(--radius); padding: 32px 30px; text-align:left; position:relative; }
-  .diary-card .quote-mark{ font-family:var(--display); font-size:52px; color: var(--gold); line-height:1; opacity:0.5; }
-  .diary-card p{ font-size:15.5px; line-height:1.75; color:#E7DCC5; margin-top:6px; }
-  .vignette-flip{ margin-top:28px; font-family:var(--display); font-style:italic; font-size: clamp(18px,2.2vw,23px); color:var(--gold); }
-  .vignette .btn{ margin-top:24px; }
-
-  /* ---------- pillars ---------- */
-  .pillars{ background: var(--paper); }
-  .pillars-grid{
-    margin-top:40px;
-    display:grid; grid-template-columns: repeat(3, 1fr); gap:22px;
-  }
-  .pillar{
-    background: var(--paper-card);
-    border-radius: var(--radius);
-    padding: 30px 24px;
-    box-shadow: var(--shadow-paper);
-    border: 1px solid var(--line);
-  }
-  .pillar .icon{ font-size:26px; }
-  .pillar h3{ font-size:17.5px; margin-top:14px; }
-  .pillar p{ margin-top:8px; font-size:14px; color:var(--text-soft); }
-
-  /* ---------- founder letter ---------- */
-  .letter{ background: var(--paper-soft); }
-  .letter-card{ max-width:680px; margin:36px auto 0; background: var(--paper-card); border-radius: var(--radius); border:1px solid var(--line); box-shadow: var(--shadow-paper); padding:40px 36px 34px; position:relative; }
-  .letter-card .quote-mark{ position:absolute; top:2px; left:24px; font-family:var(--display); font-size:70px; color:var(--gold); opacity:0.35; }
-  .letter-card p{ font-size:15px; color:var(--text-soft); margin-top:14px; line-height:1.75; }
-  .letter-card p:first-of-type{ margin-top:6px; }
-  .letter-sign{ margin-top:24px; display:flex; align-items:center; gap:12px; padding-top:20px; border-top:1px dashed var(--line); }
-  .letter-sign .avatar{ width:44px; height:44px; border-radius:50%; background: var(--sage); color:#fff; display:flex; align-items:center; justify-content:center; font-size:17px; flex:none; }
-  .letter-sign .who b{ display:block; font-family:var(--display); font-size:15px; color:var(--text); }
-  .letter-sign .who span{ font-size:12.5px; color:var(--text-soft); }
-
-  /* ---------- impact / social proof ---------- */
-  .impact{ background: var(--sage-deep); color:#F4EFE1; }
-  .impact-card{
-    max-width: 720px; margin: 0 auto; text-align:center;
-    padding: 44px 34px;
-    border: 1px solid rgba(244,239,225,0.18);
-    border-radius: var(--radius);
-    background: rgba(255,255,255,0.03);
-  }
-  .impact-card .icon{ font-size:30px; }
-  .impact-card h2{ font-size: clamp(21px,2.6vw,27px); margin-top:14px; color:#FCF6E6; }
-  .impact-card p{ margin-top:14px; color:#DCE8DF; font-size:15px; }
-
-  /* ---------- antes / depois ---------- */
-  .compare{ background: var(--paper); }
-  .compare-grid{ margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-  .compare-card{ border-radius: var(--radius); padding:28px 26px; border:1px solid var(--line); }
-  .compare-card.before{ background: #EFE7D5; }
-  .compare-card.after{ background: linear-gradient(160deg, #FFF7E6, var(--paper-card)); border-color: var(--gold); }
-  .compare-card h3{ font-size:16px; display:flex; align-items:center; gap:8px; }
-  .compare-card ul{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
-  .compare-card li{ font-size:13.8px; color:var(--text-soft); display:flex; gap:8px; }
-  .compare-card.after li{ color: var(--text); }
-
-  /* ---------- testimonials (placeholder/example) ---------- */
-  .testimonials{ background: var(--paper-soft); }
-  .test-grid{ margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .test-card{ position:relative; background:var(--paper-card); border:1px solid var(--line); border-radius: var(--radius); padding:24px 22px; box-shadow: var(--shadow-paper); }
-  .test-card .example-badge{ position:absolute; top:14px; right:14px; font-family:var(--mono); font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-soft); background: var(--paper-soft); border:1px solid var(--line); padding:3px 7px; border-radius:6px; }
-  .stars{ color: var(--gold-deep); font-size:13px; letter-spacing:2px; }
-  .test-card p{ margin-top:12px; font-size:13.8px; color:var(--text-soft); font-style:italic; }
-  .test-card .who{ margin-top:14px; font-family:var(--mono); font-size:12px; color:var(--sage-deep); font-weight:600; }
-  .testimonials-note{ text-align:center; margin-top:20px; font-size:12px; color: var(--text-soft); font-family: var(--mono); }
-
-  /* ---------- pricing ---------- */
-  .pricing{ background: var(--paper-soft); }
-  .price-box{
-    max-width: 620px; margin: 40px auto 0;
-    background: var(--paper-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow-paper);
-    padding: 40px 34px;
-    text-align:center;
-  }
-  .price-old{ font-family:var(--mono); color:var(--brick); text-decoration: line-through; font-size:15px; }
-  .price-new{ font-family:var(--display); font-size: clamp(40px,6vw,56px); color:var(--ink); font-weight:700; margin-top:6px; }
-  .price-new sup{ font-size:0.4em; top:-1em; }
-  .price-note{ font-family:var(--mono); font-size:13px; color:var(--sage-deep); margin-top:6px; }
-  .price-compare{
-    margin-top:20px; padding: 14px 16px; border-radius:12px;
-    background: var(--paper-soft); font-size:13.5px; color:var(--text-soft);
-    border:1px dashed var(--line);
-  }
-  .price-urgency{ margin-top:14px; font-family:var(--mono); font-size:12.5px; color:var(--brick); }
-  .price-box .btn{ margin-top:26px; }
-  .price-badges{ margin-top:18px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap; font-size:12.5px; color:var(--text-soft); }
-
-  /* ---------- checkout preview + order bump ---------- */
-  .checkout{ background: var(--paper); }
-  .checkout-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:26px; margin-top:40px; align-items:start; }
-  .mock-card{
-    background: var(--paper-card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-paper);
-    padding: 26px 26px 28px;
-  }
-  .mock-card h3{ font-size:16.5px; }
-  .mock-card .eyebrow{ color:var(--sage-deep); margin-bottom:6px; }
-  .fake-field{
-    margin-top:14px;
-    border: 1px solid var(--line);
-    border-radius:10px;
-    padding: 12px 14px;
-    font-size:13.5px;
-    color: var(--text-soft);
-    background: var(--paper-soft);
-  }
-  .fake-field span{ font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; display:block; color: var(--sage-deep); margin-bottom:3px; }
-
-  .bump-row{
-    margin-top:16px; display:flex; gap:12px; align-items:flex-start;
-    background: var(--paper-soft);
-    border: 1px solid var(--line);
-    border-radius:12px; padding:14px;
-  }
-  .bump-row input{ margin-top:3px; width:17px; height:17px; accent-color: var(--sage); }
-  .bump-row label{ font-size:13.5px; color:var(--text-soft); }
-  .bump-row strong{ color:var(--text); }
-  .total-line{
-    margin-top:18px; display:flex; justify-content:space-between; align-items:baseline;
-    font-family:var(--mono); font-size:14px; padding-top:14px; border-top:1px dashed var(--line);
-  }
-  .total-line b{ font-size:20px; color: var(--sage-deep); }
-
-  /* ---------- guarantee + faq ---------- */
-  .guarantee{ background: var(--paper-soft); }
-  .gf-grid{ display:grid; grid-template-columns: 0.85fr 1.15fr; gap:40px; margin-top:40px; align-items:start; }
-  .seal{
-    background: var(--paper-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow-paper);
-    padding: 32px 28px;
-    text-align:center;
-  }
-  .seal .badge{
-    width:74px; height:74px; border-radius:50%;
-    background: radial-gradient(circle at 35% 30%, var(--gold), var(--gold-deep));
-    margin: 0 auto 16px;
-    display:flex; align-items:center; justify-content:center;
-    font-size:28px; color:#3A2408;
-    box-shadow: 0 12px 20px -10px rgba(185,124,46,0.6);
-  }
-  .seal h3{ font-size:18px; }
-  .seal p{ margin-top:10px; font-size:13.5px; color:var(--text-soft); }
-
-  .faq-item{
-    border-bottom: 1px solid var(--line);
-  }
-  .faq-item:first-child{ border-top: 1px solid var(--line); }
-  .faq-q{
-    width:100%; display:flex; justify-content:space-between; align-items:center;
-    padding: 18px 4px; text-align:left; font-weight:600; font-size:15px;
-  }
-  .faq-q .plus{ font-family:var(--mono); font-size:18px; color:var(--sage-deep); transition: transform .25s ease; flex:none; margin-left:14px; }
-  .faq-item[data-open="true"] .plus{ transform: rotate(45deg); }
-  .faq-a{
-    max-height:0; overflow:hidden; transition: max-height .3s ease;
-    font-size:13.8px; color: var(--text-soft); padding: 0 4px;
-  }
-  .faq-a p{ padding-bottom:18px; }
-
-  /* ---------- final cta ---------- */
-  .final-cta{ background: var(--ink); color:#F4EFE1; text-align:center; }
-  .final-cta .eyebrow{ color:#F3D9A6; justify-content:center; display:flex; }
-  .final-cta h2{ color:#FCF6E6; font-size: clamp(22px,3vw,30px); margin-top:12px; }
-  .final-cta p{ margin-top:12px; color:#D8CBAE; max-width:52ch; margin:12px auto 0; }
-  .final-cta .btn{ margin-top:26px; }
-
-  footer{ background: var(--ink); color:#B9AF98; padding: 26px 0 100px; text-align:center; font-size:12.5px; }
-  footer .wrap{ border-top:1px solid rgba(185,175,152,0.18); padding-top:22px; }
-
-  /* ---------- sticky mobile cta ---------- */
-  .sticky-cta{
-    position:fixed; left:0; right:0; bottom:0; z-index:50;
-    background: var(--sage-deep);
-    color:#FBF8F0;
-    padding: 12px 16px;
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    box-shadow: 0 -10px 24px -10px rgba(0,0,0,0.35);
-    transform: translateY(120%);
-    transition: transform .3s ease;
-  }
-  .sticky-cta.show{ transform: translateY(0); }
-  .sticky-cta .txt{ font-size:13px; line-height:1.2; }
-  .sticky-cta .txt b{ display:block; font-family:var(--display); font-size:15.5px; }
-  .sticky-cta .btn{ padding:11px 18px; font-size:13.5px; white-space:nowrap; }
-  @media (min-width: 861px){ .sticky-cta{ display:none; } }
-
-  /* ---------- responsive ---------- */
-  @media (max-width: 980px){
-    .hero-inner{ grid-template-columns:1fr; gap:44px; padding-bottom:44px; }
-    .phone-stage{ order:-1; }
-    .pillars-grid{ grid-template-columns:1fr; }
-    .checkout-grid{ grid-template-columns:1fr; }
-    .gf-grid{ grid-template-columns:1fr; gap:28px; }
-    .compare-grid{ grid-template-columns:1fr; }
-    .test-grid{ grid-template-columns:1fr; }
-  }
-  @media (max-width: 520px){
-    .section-pad{ padding:52px 0; }
-    .hero{ padding-top:20px; }
-    .hero-ctas .btn{ width:100%; }
-    .phone-arrow.prev{ margin-left:6px; }
-    .phone-arrow.next{ margin-right:6px; }
-    .letter-card{ padding:32px 22px 28px; }
-  }
-</style>
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { animation: reveal .7s var(--ease) both; }
+      .reveal-delay { animation-delay: .12s; }
+      @keyframes reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<div class="banner">
-  ⚡ <strong>EDIÇÃO 2026</strong> — mais de 2.400 vidas edificadas este ano · de <s>R$97</s> por <strong>R$47</strong> · liberação imediata
-</div>
-
-<!-- ===================== HERO ===================== -->
-<header class="hero" id="hero">
-  <div class="wrap hero-inner">
-    <div>
-      <div class="hero-brand">
-        <div class="mark">D</div>
-        <span>Devocional Diário · 2026</span>
-      </div>
-      <p class="hero-hook">Você lembra da última vez que sentiu paz de verdade, logo ao acordar?</p>
-      <p class="eyebrow">365 dias · versículo · reflexão · oração guiada</p>
-      <h1>Vença a correria do dia a dia e volte a ter um momento diário com Deus — em <em>apenas 3 minutos</em>.</h1>
-      <p class="sub">Baixe o livro digital <strong>Devocional Diário 2026</strong>. 365 mensagens curtas com versículo-chave, reflexão prática e oração guiada para transformar o seu dia antes mesmo de sair de casa.</p>
-
-      <div class="hero-ctas">
-        <a href="#oferta" class="btn btn-primary">Quero meu devocional no celular agora</a>
-        <a href="#pilares" class="btn btn-ghost">Ver como funciona</a>
-      </div>
-      <p class="hero-micro">📱 Formato PDF leve. Abre com 1 clique no celular, sem ocupar memória.</p>
-      <div class="hero-trust">
-        <span>⚡ Receba no e-mail e no WhatsApp em 1 minuto após o Pix.</span>
-        <span>🔒 Pagamento único · sem mensalidades · acesso vitalício.</span>
-      </div>
+  <div class="urgency" role="status" aria-live="polite">
+    <div class="frame">
+      <span class="urgency-dot" aria-hidden="true"></span>
+      <span class="countdown"><span aria-hidden="true">◷</span> Campanha especial termina em <strong id="countdown">00:00:00</strong></span>
+      <span class="urgency-note">Acesso imediato após a confirmação</span>
     </div>
+  </div>
 
-    <div class="phone-stage">
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-screen" id="phoneScreen">
-          <!-- devotional cards injected by JS -->
+  <header class="header">
+    <div class="frame header-inner">
+      <a class="brand" href="#top" aria-label="Bíblia Explicada — início">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 8h8l3 3 3-3h8v16h-8l-3-3-3 3H5z" fill="currentColor"></path><path d="M16 11v10" stroke="#241d18" stroke-width="1.4"></path></svg></span>
+        <span class="brand-copy"><strong>BÍBLIA</strong><em>EXPLICADA</em></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <span class="menu-icon" aria-hidden="true">☰</span>
+      </button>
+      <nav class="nav" id="mainNav" aria-label="Navegação principal">
+        <a href="#metodo">Como funciona</a>
+        <a href="#bonus">O que você recebe</a>
+        <a href="#faq">Dúvidas</a>
+        <a class="nav-cta" data-checkout href="#oferta">Ver oferta <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="top">
+      <div class="frame hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow light">GUIA VISUAL DE ESTUDO BÍBLICO</p>
+          <h1>Pare de apenas ler. <em>Comece a entender.</em></h1>
+          <p class="hero-lead">Os 66 livros da Bíblia explicados com contexto, clareza e profundidade — para você estudar sem se perder no caminho.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" data-checkout href="#oferta">Quero entender a Bíblia <span aria-hidden="true">↗</span></a>
+            <a class="text-link light-link" href="#metodo">Ver como funciona <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-trust" aria-label="Elementos de segurança">
+            <span>♢ Compra protegida</span>
+            <span>ϟ Acesso imediato</span>
+            <span>▣ Acesso vitalício</span>
+          </div>
         </div>
-        <div class="phone-nav">
-          <button class="phone-arrow prev" id="prevCard" aria-label="Devocional anterior">‹</button>
-          <button class="phone-arrow next" id="nextCard" aria-label="Próximo devocional">›</button>
-        </div>
-        <div class="phone-dots" id="phoneDots"></div>
-      </div>
-      <p class="phone-caption">Prévia real do conteúdo — assim é uma página do seu devocional</p>
-    </div>
-  </div>
-  <svg class="torn to-paper-soft" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</header>
 
-<!-- ===================== VOCÊ SE IDENTIFICA? ===================== -->
-<section class="empathy section-pad" id="empatia">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">Isso é pra você?</p>
-      <h2>Se alguma frase abaixo parece com a sua vida...</h2>
-    </div>
-    <ul class="checklist reveal">
-      <li><span class="tick">✓</span> Já tentei ler a Bíblia todos os dias, mas nunca consegui manter a rotina.</li>
-      <li><span class="tick">✓</span> Acordo e já pego o celular antes mesmo de respirar fundo.</li>
-      <li><span class="tick">✓</span> Sinto que estou sempre correndo, e a fé foi ficando pra depois.</li>
-      <li><span class="tick">✓</span> Quero mais paz no meu dia a dia, mas não sei nem por onde começar.</li>
-    </ul>
-    <div class="personas reveal">
-      <span class="persona-chip">👩‍👧 Mãe de plantão</span>
-      <span class="persona-chip">💼 Profissional corrida(o)</span>
-      <span class="persona-chip">🎓 Universitário(a) sem rotina fixa</span>
-      <span class="persona-chip">🌅 Quem quer recomeçar o hábito da oração</span>
-    </div>
-    <p class="empathy-close reveal">Se você se reconheceu em pelo menos uma frase, continue lendo — este devocional foi pensado pra você.</p>
-  </div>
-  <svg class="torn to-ink" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</section>
-
-<!-- ===================== VINHETA / UM DIA COMUM ===================== -->
-<section class="vignette section-pad">
-  <div class="wrap">
-    <p class="eyebrow reveal">Talvez isso pareça familiar…</p>
-    <h2 class="reveal">6h32 da manhã.</h2>
-    <div class="diary-card reveal">
-      <div class="quote-mark">“</div>
-      <p>O despertador toca pela terceira vez. Você levanta correndo, o café esfria na mesa, e o celular já está na sua mão antes mesmo do primeiro pensamento do dia. A lista de tarefas começa antes de você sequer abrir os olhos direito. Em algum lugar ali, a vontade de parar por três minutos e respirar com Deus vai ficando pra depois. De novo.</p>
-    </div>
-    <p class="vignette-flip reveal">E se os primeiros três minutos do seu dia fossem diferentes?</p>
-    <a href="#oferta" class="btn btn-ghost reveal">Quero mudar essa manhã</a>
-  </div>
-  <svg class="torn to-paper" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</section>
-
-<!-- ===================== 3 PILARES ===================== -->
-<section class="pillars section-pad" id="pilares">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">O que você recebe</p>
-      <h2>Três pilares para reencontrar sua constância espiritual</h2>
-    </div>
-    <div class="pillars-grid">
-      <div class="pillar reveal">
-        <div class="icon">⏱️</div>
-        <h3>Leitura rápida (3 minutos)</h3>
-        <p>Reflexões diretas para quem tem a rotina corrida, mas se recusa a deixar a fé de lado.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="icon">🙏</div>
-        <h3>Oração guiada diária</h3>
-        <p>Não sabe o que orar no fim da leitura? Cada devocional termina com uma oração pronta.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="icon">🕊️</div>
-        <h3>Paz e direção para o dia</h3>
-        <p>Comece sua manhã com a mente tranquila e o coração fortalecido antes de olhar notícias ou redes sociais.</p>
-      </div>
-    </div>
-  </div>
-  <svg class="torn to-paper-soft" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</section>
-
-<!-- ===================== CARTA DO CRIADOR ===================== -->
-<!-- IMPORTANTE: personalize esta carta com a história real do criador antes de publicar -->
-<section class="letter section-pad" id="carta">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">Por que eu criei este devocional</p>
-      <h2>Uma carta rápida pra você</h2>
-    </div>
-    <div class="letter-card reveal">
-      <div class="quote-mark">“</div>
-      <p>Eu sei o que é acordar correndo, sentir que o dia inteiro passa sem parar pra respirar — e à noite perceber que mais um dia se foi sem aquele momento com Deus que eu tanto queria ter tido.</p>
-      <p>Foi numa dessas manhãs corridas que decidi criar algo simples: não um estudo teológico longo, não mais uma tarefa pra colocar na lista — só três minutos de verdade, guiados, prontos, pra encaixar entre o despertador e a correria.</p>
-      <p>Este devocional nasceu da minha própria rotina apertada. E se ajudou a mim, pode ajudar você também.</p>
-      <div class="letter-sign">
-        <div class="avatar">✍️</div>
-        <div class="who">
-          <b>Com carinho, [Seu Nome]</b>
-          <span>Criador(a) do Devocional Diário 2026</span>
+        <div class="hero-product reveal reveal-delay">
+          <span class="chapter-tag">CAPÍTULO 01 <span>•</span> VISÃO GERAL</span>
+          <div class="hero-image-wrap">
+            <img src="https://bibliaexplicada.netlify.app/assets/mokup%20(3)_1764297177798-CFbnVedc.webp" alt="Coleção Bíblia Explicada com livros de estudo e uma Bíblia aberta" width="600" height="750">
+          </div>
+          <div class="hero-price">
+            <span>Oferta especial</span>
+            <strong><small>por apenas</small> R$ 27<span>,00</span></strong>
+            <a data-checkout href="#oferta">Acessar agora <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <svg class="torn to-sage" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</section>
+      <div class="hero-quote"><span>“Lâmpada para os meus pés é a tua palavra.”</span><em>Salmos 119:105</em></div>
+    </section>
 
-<!-- ===================== IMPACTO SOCIAL ===================== -->
-<section class="impact section-pad">
-  <div class="wrap">
-    <div class="impact-card reveal">
-      <div class="icon">💛</div>
-      <h2>Sua fé que alimenta outra família</h2>
-      <p>Parte do valor de cada livro vendido é destinada diretamente para a compra e doação de cestas básicas para famílias carentes. Você edifica a sua vida e abençoa o próximo com um único gesto.</p>
-    </div>
-  </div>
-  <svg class="torn to-paper" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</section>
-
-<!-- ===================== ANTES / DEPOIS ===================== -->
-<section class="compare section-pad">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">A diferença está nos primeiros minutos</p>
-      <h2>Imagine seus próximos 21 dias</h2>
-    </div>
-    <div class="compare-grid">
-      <div class="compare-card before reveal">
-        <h3>😮‍💨 Como tem sido</h3>
-        <ul>
-          <li>Acorda no susto, celular na mão</li>
-          <li>Ansiedade antes mesmo do café</li>
-          <li>Fé em segundo plano — "depois eu leio"</li>
-          <li>Sensação de estar sempre devendo esse momento a Deus</li>
-        </ul>
+    <section class="trust-strip" aria-label="Informações de confiança">
+      <div class="frame">
+        <p><strong>Um acervo para voltar sempre.</strong> Estude no seu ritmo, pelo celular ou computador.</p>
+        <div class="trust-items"><span>⌑ Pagamento seguro</span><span>◌ Suporte no WhatsApp</span><span>♢ 7 dias de garantia</span></div>
       </div>
-      <div class="compare-card after reveal">
-        <h3>🌤️ Como pode ser</h3>
-        <ul>
-          <li>Acorda, respira, lê 3 minutos</li>
-          <li>Começa o dia com propósito</li>
-          <li>Oração guiada, sem precisar pensar no que dizer</li>
-          <li>Sensação de leveza pra encarar o dia</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <svg class="torn to-paper-soft" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</section>
+    </section>
 
-<!-- ===================== DEPOIMENTOS (EXEMPLO) ===================== -->
-<!-- IMPORTANTE: substitua os depoimentos abaixo por avaliações reais de clientes antes de publicar -->
-<section class="testimonials section-pad">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">Depoimentos</p>
-      <h2>O que as leitoras podem dizer</h2>
-    </div>
-    <div class="test-grid">
-      <div class="test-card reveal">
-        <span class="example-badge">Exemplo</span>
-        <div class="stars">★★★★★</div>
-        <p>"Nunca pensei que 3 minutos fariam tanta diferença na minha manhã. Virou o momento que eu mais espero no dia."</p>
-        <div class="who">Ana P.</div>
-      </div>
-      <div class="test-card reveal">
-        <span class="example-badge">Exemplo</span>
-        <div class="stars">★★★★★</div>
-        <p>"Simples, direto e sem cobrança. Consegui manter a rotina pela primeira vez em anos."</p>
-        <div class="who">Carla M.</div>
-      </div>
-      <div class="test-card reveal">
-        <span class="example-badge">Exemplo</span>
-        <div class="stars">★★★★★</div>
-        <p>"Uso no ônibus, a caminho do trabalho. Já virou meu ritual antes de começar o expediente."</p>
-        <div class="who">Rafael S.</div>
-      </div>
-    </div>
-    <p class="testimonials-note">* depoimentos ilustrativos — substitua pelos comentários reais dos seus clientes antes de publicar</p>
-  </div>
-</section>
-
-<!-- ===================== OFERTA / PREÇO ===================== -->
-<section class="pricing section-pad" id="oferta">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">Oferta de lançamento</p>
-      <h2>Menos que um café por dia para manter sua constância o ano todo</h2>
-    </div>
-    <div class="price-box reveal">
-      <div class="price-old">De R$ 97,00</div>
-      <div class="price-new">R$ 47<sup>,00</sup></div>
-      <div class="price-note">no Pix ou no cartão</div>
-      <div class="price-compare">☕ Isso custa menos de <strong>R$ 0,13 por dia</strong> — menos que um café na padaria — para manter sua constância espiritual o ano todo.</div>
-      <div class="price-urgency">🔥 Condição especial de lançamento — o valor pode voltar para R$ 97 a qualquer momento.</div>
-      <a href="#checkout-preview" class="btn btn-primary btn-block">Baixar livro digital por R$ 47</a>
-      <div class="price-badges">
-        <span>🔒 Pagamento único</span>
-        <span>📱 Acesso vitalício</span>
-        <span>✅ Garantia de 7 dias</span>
-      </div>
-    </div>
-  </div>
-  <svg class="torn to-paper" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="currentColor" d="M0,60 L0,32 L48,18 L96,36 L144,12 L192,30 L240,20 L288,40 L336,15 L384,33 L432,22 L480,38 L528,17 L576,29 L624,10 L672,34 L720,20 L768,40 L816,16 L864,30 L912,24 L960,38 L1008,14 L1056,32 L1104,20 L1152,36 L1200,18 L1248,30 L1296,22 L1344,38 L1392,16 L1440,32 L1440,60 Z"/>
-  </svg>
-</section>
-
-<!-- ===================== CHECKOUT PREVIEW + ORDER BUMP ===================== -->
-<section class="checkout section-pad" id="checkout-preview">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">Simulação do checkout</p>
-      <h2>Simples assim: nome, e-mail e pronto</h2>
-      <p>Prévia de como fica a finalização da compra — o link de pagamento real (Kiwify, Hotmart ou Pix) é conectado por você antes de publicar a página.</p>
-    </div>
-
-    <div class="checkout-grid">
-      <div class="mock-card reveal">
-        <p class="eyebrow">Checkout ultra-simplificado</p>
-        <h3>Seus dados</h3>
-        <div class="fake-field"><span>Nome</span>Maria S.</div>
-        <div class="fake-field"><span>E-mail</span>maria@exemplo.com</div>
-        <div class="fake-field"><span>Pagamento</span>Pix · confirmação automática</div>
-        <p style="margin-top:16px; font-size:12.5px; color:var(--text-soft);">Quanto menor o formulário, maior a conversão. Só pedimos o essencial.</p>
-      </div>
-
-      <div class="mock-card reveal">
-        <p class="eyebrow">Order bump</p>
-        <h3>Antes de finalizar</h3>
-        <div class="bump-row">
-          <input type="checkbox" id="bumpCheck" />
-          <label for="bumpCheck"><strong>Sim! Quero a versão em Áudio (MP3)</strong> para ouvir no carro ou nas tarefas diárias — por apenas R$ 19,90.</label>
-        </div>
-        <div class="total-line">
-          <span>Total do pedido</span>
-          <b id="totalPrice">R$ 47,00</b>
-        </div>
-        <a href="#" class="btn btn-primary btn-block" style="margin-top:18px;">Confirmar e receber no WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== GARANTIA + FAQ ===================== -->
-<section class="guarantee section-pad">
-  <div class="wrap">
-    <div class="kicker reveal">
-      <p class="eyebrow">Sem riscos</p>
-      <h2>Experimente por 7 dias, sem compromisso</h2>
-    </div>
-
-    <div class="gf-grid">
-      <div class="seal reveal">
-        <div class="badge">🛡️</div>
-        <h3>Garantia incondicional de 7 dias</h3>
-        <p>Baixe o livro, leia e experimente por 7 dias. Se você sentir que ele não ajudou sua rotina de oração, mande uma mensagem e devolvemos 100% do seu dinheiro.</p>
-      </div>
-
-      <div class="reveal" id="faqList">
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            Como vou receber o livro?
-            <span class="plus">+</span>
-          </button>
-          <div class="faq-a"><p>O acesso chega direto no seu e-mail e no WhatsApp imediatamente após a confirmação do Pix.</p></div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            Consigo ler no meu celular?
-            <span class="plus">+</span>
-          </button>
-          <div class="faq-a"><p>Sim! O arquivo em PDF é compatível com qualquer celular (Android, iPhone), leitores de PDF e tablets.</p></div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            É assinatura mensal?
-            <span class="plus">+</span>
-          </button>
-          <div class="faq-a"><p>Não. É um pagamento único de R$ 47 para acesso vitalício ao material.</p></div>
+    <section class="section intro" id="introducao">
+      <div class="frame intro-grid">
+        <div class="section-index">01 <small>O ponto de partida</small></div>
+        <div class="intro-content">
+          <p class="eyebrow">PARA QUEM QUER IR ALÉM DO VERSÍCULO SOLTO</p>
+          <h2>Quando o contexto aparece, a leitura muda de lugar.</h2>
+          <p class="large-copy">A Bíblia Explicada organiza a grande história das Escrituras em uma sequência visual e acessível. Você encontra explicações que ajudam a conectar personagens, épocas, temas e ensinamentos — sem precisar abrir dezenas de abas para começar.</p>
+          <div class="signature">Mais clareza para o seu próximo estudo.</div>
         </div>
       </div>
+    </section>
+
+    <section class="section method" id="metodo">
+      <div class="frame">
+        <div class="section-heading split-heading">
+          <div><p class="eyebrow">UM MÉTODO PARA LER COM MAIS PRESENÇA</p><h2>O que muda quando você tem um guia ao lado.</h2></div>
+          <p>Não é sobre correr para terminar. É sobre saber onde você está, o que está lendo e por que isso importa.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-top"><span>01</span><span aria-hidden="true">⌖</span></div><h3>Contexto para não se perder</h3><p>Entenda o cenário, a mensagem e os principais acontecimentos de cada livro com uma leitura guiada.</p><span class="feature-rule"></span></article>
+          <article class="feature-card"><div class="feature-top"><span>02</span><span aria-hidden="true">◫</span></div><h3>Explicação em camadas</h3><p>Comece pelo essencial ou aprofunde-se nos detalhes quando quiser estudar com mais tempo.</p><span class="feature-rule"></span></article>
+          <article class="feature-card"><div class="feature-top"><span>03</span><span aria-hidden="true">✦</span></div><h3>Linguagem que aproxima</h3><p>Um material visual e didático, pensado para transformar passagens difíceis em aprendizados claros.</p><span class="feature-rule"></span></article>
+          <article class="feature-card"><div class="feature-top"><span>04</span><span aria-hidden="true">✧</span></div><h3>Aplicação no cotidiano</h3><p>Conecte o que você lê com seus estudos, devocionais, aulas e conversas sobre a Palavra.</p><span class="feature-rule"></span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section study" id="conteudo-produto">
+      <div class="frame study-grid">
+        <div class="study-image"><img src="https://i.ibb.co/jPSFHPpj/2-min.png" alt="Bíblia de estudo aberta com marcadores e anotações" loading="lazy" width="700" height="700"><span class="image-caption">Uma página de cada vez.</span></div>
+        <div class="study-content">
+          <p class="eyebrow light">FEITO PARA O SEU RITMO</p>
+          <h2>Um material para consultar, marcar e revisitar.</h2>
+          <p>Use nas suas leituras pessoais, na preparação de uma aula ou naquela dúvida que volta depois de um tempo. A estrutura foi pensada para sair do “eu deveria estudar mais” e chegar ao “agora eu sei por onde continuar”.</p>
+          <ul class="check-list">
+            <li>✓ Organização por livros e períodos bíblicos</li>
+            <li>✓ Explicações com linguagem direta e visual</li>
+            <li>✓ Consulta prática em casa, na igreja ou em viagem</li>
+          </ul>
+          <a class="text-link light-link" href="#bonus">Conhecer a coleção completa <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bonuses" id="bonus">
+      <div class="frame">
+        <div class="center-heading">
+          <p class="eyebrow">ALÉM DO MATERIAL PRINCIPAL</p>
+          <h2>Mais caminhos para aprofundar o que você aprende.</h2>
+          <p>Na oferta completa, você também recebe uma biblioteca de apoio para devocionais, preparação e revisão.</p>
+        </div>
+        <div class="bonus-grid">
+          <article class="bonus-card"><div class="bonus-cover"><span>40</span><small>BÔNUS</small><strong>Dias de busca pelo Senhor</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 01</p><h3>Devocional de 40 dias</h3><p>Uma sequência de leituras para criar constância.</p></div></article>
+          <article class="bonus-card"><div class="bonus-cover"><span>1k</span><small>BÔNUS</small><strong>Esboços de pregação</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 02</p><h3>1.000 esboços</h3><p>Pontos de partida para aulas, sermões e estudos.</p></div></article>
+          <article class="bonus-card"><div class="bonus-cover"><span>150</span><small>BÔNUS</small><strong>Salmos explicados</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 03</p><h3>150 Salmos</h3><p>Uma leitura guiada para atravessar poemas e orações.</p></div></article>
+          <article class="bonus-card"><div class="bonus-cover"><span>200</span><small>BÔNUS</small><strong>Versículos reveladores</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 04</p><h3>Coleção Ouro</h3><p>Uma seleção para revisar, memorizar e compartilhar.</p></div></article>
+          <article class="bonus-card"><div class="bonus-cover"><span>31</span><small>BÔNUS</small><strong>Provérbios explicados</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 05</p><h3>31 Provérbios</h3><p>Sabedoria prática organizada para a vida real.</p></div></article>
+          <article class="bonus-card"><div class="bonus-cover"><span>100</span><small>BÔNUS</small><strong>Novo Testamento</strong><i>estudo & prática</i></div><div class="bonus-body"><p class="bonus-number">BÔNUS 06</p><h3>100 versículos do NT</h3><p>Contexto para compreender os ensinamentos de Jesus.</p></div></article>
+        </div>
+        <div class="bonus-more"><span aria-hidden="true">✦</span><strong>+ outros materiais complementares</strong><span>Incluídos no plano completo conforme a campanha vigente.</span></div>
+      </div>
+    </section>
+
+    <section class="section offer" id="oferta">
+      <div class="frame">
+        <div class="offer-heading">
+          <p class="eyebrow light">ESCOLHA O SEU PRÓXIMO PASSO</p>
+          <h2>Comece pelo essencial. <em>Leve o estudo inteiro.</em></h2>
+          <p>Uma decisão simples: acesso à coleção principal ou a biblioteca completa para seguir estudando.</p>
+        </div>
+        <div class="plans">
+          <article class="plan plan-basic">
+            <p class="plan-label">Para começar</p>
+            <h3>Plano Essencial</h3>
+            <p>Os 66 livros explicados, organizados para uma primeira jornada de entendimento.</p>
+            <div class="plan-price"><del>R$ 97</del><strong>R$ 10<span>,00</span></strong></div>
+            <ul class="plan-list"><li>✓ Coleção Bíblia Explicada</li><li>✓ Acesso vitalício</li><li>✓ Entrega digital imediata</li></ul>
+            <a class="button button-outline button-full" data-checkout href="#oferta">Quero somente o essencial <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="plan plan-complete">
+            <div class="popular">✦ MAIS ESCOLHIDO</div>
+            <p class="plan-label">Para continuar</p>
+            <h3>Plano Completo</h3>
+            <p>A coleção principal + bônus para transformar estudo, devocional e preparação em uma rotina possível.</p>
+            <div class="plan-price"><del>de R$ 197</del><strong>R$ 27<span>,00</span></strong><small>ou 3x de R$ 10,32</small></div>
+            <ul class="plan-list"><li>✓ Os 66 livros explicados</li><li>✓ 10 bônus de estudo</li><li>✓ Acesso vitalício e atualizações</li><li>✓ Suporte prioritário no WhatsApp</li></ul>
+            <a class="button button-primary button-full" data-checkout href="#oferta">Quero o plano completo <span aria-hidden="true">↗</span></a>
+            <div class="plan-safe">⌑ Compra protegida no checkout</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guarantee" id="garantia">
+      <div class="frame guarantee-grid">
+        <div class="seal" aria-label="Garantia de 7 dias"><span aria-hidden="true">♢</span><strong>7</strong><small>DIAS</small></div>
+        <div><p class="eyebrow">UMA DECISÃO SEM PESO</p><h2>Você pode olhar com calma.</h2><p>Seu acesso está protegido por uma garantia de 7 dias. Conheça o material, veja se ele acompanha a sua forma de estudar e, se não fizer sentido, consulte as condições de reembolso no checkout.</p></div>
+        <a class="text-link" data-checkout href="#oferta">Ver condições da oferta <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="frame faq-grid">
+        <div class="faq-intro"><p class="eyebrow">AINDA TEM ALGUMA DÚVIDA?</p><h2>Resposta clara antes de decidir.</h2><p>Se a sua pergunta não estiver aqui, fale com o suporte indicado no checkout.</p><a class="text-link" data-support href="#oferta">Falar com o suporte <span aria-hidden="true">↗</span></a></div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Como vou receber o material?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Após a confirmação do pagamento, o acesso é enviado para o e-mail e para o WhatsApp cadastrados no checkout. Confira também a caixa de spam e as abas promocionais.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>O acesso é vitalício?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Sim. A proposta da oferta é permitir que você consulte o material sem mensalidade, no seu ritmo e sempre que precisar voltar a um livro ou tema.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Preciso ter conhecimento teológico?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>Não. A experiência foi pensada para quem está começando e também para quem já estuda, com uma linguagem progressiva e visual.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Quais são as formas de pagamento?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>As opções disponíveis aparecem com segurança no checkout. O plano completo pode ser apresentado à vista ou parcelado, conforme as condições vigentes da campanha.</p></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>E se eu mudar de ideia?</span><span aria-hidden="true">⌄</span></button><div class="faq-answer"><p>A oferta informa garantia de 7 dias. Se o conteúdo não fizer sentido para você, consulte as condições no checkout e solicite o reembolso dentro do prazo.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="frame final-content">
+        <p class="eyebrow light">SUA PRÓXIMA LEITURA PODE COMEÇAR AGORA</p>
+        <h2>Abra a Bíblia com menos ruído e mais entendimento.</h2>
+        <p>O conteúdo que você procura pode estar em uma explicação mais clara, na ordem certa e no seu tempo.</p>
+        <a class="button button-primary" data-checkout href="#oferta">Quero acessar a Bíblia Explicada <span aria-hidden="true">↗</span></a>
+        <div class="final-notes"><span>♢ Garantia de 7 dias</span><span>⌑ Pagamento seguro</span><span>ϟ Acesso imediato</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="frame footer-main">
+      <a class="brand" href="#top" aria-label="Voltar ao início"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 8h8l3 3 3-3h8v16h-8l-3-3-3 3H5z" fill="currentColor"></path><path d="M16 11v10" stroke="#241d18" stroke-width="1.4"></path></svg></span><span class="brand-copy"><strong>BÍBLIA</strong><em>EXPLICADA</em></span></a>
+      <p>Um guia visual para ler com contexto, clareza e constância.</p>
+      <small>© 2026 Bíblia Explicada</small>
     </div>
-  </div>
-</section>
+    <div class="frame disclaimer">Antes de publicar, confirme preços, prazos, depoimentos, números e condições comerciais com o proprietário do produto. Esta página não inventa avaliações nem prova social.</div>
+  </footer>
 
-<!-- ===================== CTA FINAL ===================== -->
-<section class="final-cta section-pad">
-  <div class="wrap">
-    <p class="eyebrow">Você não precisa fazer isso sozinho(a)</p>
-    <h2>365 dias. 3 minutos por dia. Um novo hábito com Deus.</h2>
-    <p>Talvez amanhã de manhã seja diferente. Só depende do primeiro passo — e ele custa menos que um café.</p>
-    <a href="#oferta" class="btn btn-primary">Quero meu devocional agora — R$ 47</a>
-  </div>
-</section>
+  <a class="mobile-cta" data-checkout href="#oferta"><span><small>Oferta especial</small>Acessar agora por R$ 27,00</span><span aria-hidden="true">↗</span></a>
 
-<footer>
-  <div class="wrap">
-    Devocional Diário 2026 — produto digital em PDF. Pagamento processado por parceiro de checkout (Pix/cartão).<br />
-    Dúvidas? Fale pelo WhatsApp após a compra. Todos os direitos reservados.
-  </div>
-</footer>
+  <script>
+    /* Direção visual: Editorial Sacro Contemporâneo — interações curtas, clareza e redução de fricção. */
+    const CONFIG = {
+      // Troque apenas estes valores antes de publicar.
+      checkoutUrl: "https://www.ggcheckout.com/checkout/v5/tPv3WNraAtNGZqQMEjEB?utm_source=organic&utm_medium=landing-page",
+      supportUrl: "https://wa.me/5500000000000?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20a%20B%C3%ADblia%20Explicada",
+      campaignEnd: "2026-08-14T00:00:00-03:00"
+    };
 
-<div class="sticky-cta" id="stickyCta">
-  <div class="txt">Devocional Diário 2026<b>R$ 47,00 · acesso vitalício</b></div>
-  <a href="#oferta" class="btn btn-primary">Garantir agora</a>
-</div>
-
-<script>
-(function(){
-  "use strict";
-
-  /* ---------------- devotional rotating cards ---------------- */
-  var cards = [
-    {
-      day: "Dia 214 · Tema: Descanso",
-      title: "Aquiete-se",
-      verse: "Inspirado em Salmos 46:10",
-      essence: "No meio do barulho do dia, a certeza da presença de Deus é o lugar onde a alma descansa.",
-      reflect: "Antes de olhar o celular, respire fundo. O dia vai correr do mesmo jeito — mas você pode começá-lo em paz, e não em alerta.",
-      prayer: "Senhor, acalma minha mente antes de eu sair de casa. Ensina-me a caminhar com calma mesmo num dia corrido."
-    },
-    {
-      day: "Dia 215 · Tema: Coragem",
-      title: "Não temas",
-      verse: "Inspirado em Josué 1:9",
-      essence: "A coragem não vem da ausência de medo, mas da certeza de que você não caminha sozinho.",
-      reflect: "Talvez hoje tenha uma conversa difícil ou uma decisão pendente. Comece lembrando de quem está com você em cada passo.",
-      prayer: "Pai, dá-me coragem para o que hoje exige de mim. Lembra-me de que não enfrento nada sozinho."
-    },
-    {
-      day: "Dia 216 · Tema: Gratidão",
-      title: "Este é o dia",
-      verse: "Inspirado em Salmos 118:24",
-      essence: "Gratidão não espera um dia perfeito — ela escolhe enxergar o bem no dia que já começou.",
-      reflect: "Antes de listar os problemas, liste três coisas boas de ontem. É assim que o coração aprende a esperar o bem.",
-      prayer: "Obrigado por este novo dia, Senhor. Ajuda-me a vivê-lo com um coração agradecido."
-    }
-  ];
-
-  var screen = document.getElementById('phoneScreen');
-  var dotsWrap = document.getElementById('phoneDots');
-  var current = 0;
-  var timer = null;
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function buildCards(){
-    cards.forEach(function(c, i){
-      var el = document.createElement('div');
-      el.className = 'devo-card' + (i === 0 ? ' active' : '');
-      el.setAttribute('data-index', i);
-      el.innerHTML =
-        '<div class="devo-day">' + c.day + '</div>' +
-        '<div class="devo-title">' + c.title + '</div>' +
-        '<div class="devo-verse">' + c.verse + '</div>' +
-        '<div class="devo-essence">' + c.essence + '</div>' +
-        '<div class="devo-reflect">' + c.reflect + '</div>' +
-        '<div class="devo-prayer"><b>Oração:</b> ' + c.prayer + '</div>';
-      screen.appendChild(el);
-
-      var dot = document.createElement('button');
-      dot.setAttribute('aria-label', 'Ver ' + c.title);
-      dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
-      dot.addEventListener('click', function(){ goTo(i); resetTimer(); });
-      dotsWrap.appendChild(dot);
+    const checkoutLinks = document.querySelectorAll("[data-checkout]");
+    checkoutLinks.forEach((link) => {
+      link.setAttribute("href", CONFIG.checkoutUrl);
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
     });
-  }
 
-  function goTo(index){
-    var allCards = screen.querySelectorAll('.devo-card');
-    var allDots = dotsWrap.querySelectorAll('button');
-    index = (index + cards.length) % cards.length;
-    allCards.forEach(function(el, i){ el.classList.toggle('active', i === index); });
-    allDots.forEach(function(d, i){ d.setAttribute('aria-current', i === index ? 'true' : 'false'); });
-    current = index;
-  }
+    document.querySelectorAll("[data-support]").forEach((link) => {
+      link.setAttribute("href", CONFIG.supportUrl);
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+    });
 
-  function resetTimer(){
-    if (timer) clearInterval(timer);
-    if (!reducedMotion){
-      timer = setInterval(function(){ goTo(current + 1); }, 5200);
-    }
-  }
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    const menuIcon = menuToggle.querySelector(".menu-icon");
+    menuToggle.addEventListener("click", () => {
+      const open = mainNav.classList.toggle("open");
+      document.body.classList.toggle("menu-open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+      menuIcon.textContent = open ? "×" : "☰";
+    });
 
-  buildCards();
-  resetTimer();
+    mainNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      mainNav.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Abrir menu");
+      menuIcon.textContent = "☰";
+    }));
 
-  document.getElementById('nextCard').addEventListener('click', function(){ goTo(current + 1); resetTimer(); });
-  document.getElementById('prevCard').addEventListener('click', function(){ goTo(current - 1); resetTimer(); });
-
-  var phone = document.querySelector('.phone');
-  phone.addEventListener('mouseenter', function(){ if (timer) clearInterval(timer); });
-  phone.addEventListener('mouseleave', resetTimer);
-
-  /* ---------------- order bump total ---------------- */
-  var bumpCheck = document.getElementById('bumpCheck');
-  var totalPrice = document.getElementById('totalPrice');
-  bumpCheck.addEventListener('change', function(){
-    totalPrice.textContent = bumpCheck.checked ? 'R$ 66,90' : 'R$ 47,00';
-  });
-
-  /* ---------------- faq accordion ---------------- */
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    var q = item.querySelector('.faq-q');
-    var a = item.querySelector('.faq-a');
-    q.addEventListener('click', function(){
-      var isOpen = item.getAttribute('data-open') === 'true';
-      document.querySelectorAll('.faq-item').forEach(function(other){
-        other.setAttribute('data-open', 'false');
-        other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-        other.querySelector('.faq-a').style.maxHeight = null;
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const answer = item.querySelector(".faq-answer");
+        const isOpen = item.classList.toggle("open");
+        button.setAttribute("aria-expanded", String(isOpen));
+        answer.style.maxHeight = isOpen ? answer.scrollHeight + "px" : "0px";
       });
-      if (!isOpen){
-        item.setAttribute('data-open', 'true');
-        q.setAttribute('aria-expanded', 'true');
-        a.style.maxHeight = a.scrollHeight + 'px';
+    });
+
+    const countdown = document.getElementById("countdown");
+    const target = new Date(CONFIG.campaignEnd).getTime();
+    const pad = (number) => String(number).padStart(2, "0");
+    const updateCountdown = () => {
+      const remaining = Math.max(0, target - Date.now());
+      const totalSeconds = Math.floor(remaining / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      countdown.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+      if (remaining === 0) {
+        document.querySelector(".urgency-note").textContent = "Consulte a disponibilidade atual no checkout";
       }
-    });
-  });
-
-  /* ---------------- sticky mobile cta ---------------- */
-  var stickyCta = document.getElementById('stickyCta');
-  var heroEl = document.getElementById('hero');
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        stickyCta.classList.toggle('show', !entry.isIntersecting && entry.boundingClientRect.top < 0);
-      });
-    }, { threshold: 0 });
-    io.observe(heroEl);
-  }
-
-  /* ---------------- reveal on scroll ---------------- */
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window){
-    var ro = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          entry.target.classList.add('is-visible');
-          ro.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(function(el){ ro.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
-  }
-})();
-</script>
+    };
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
