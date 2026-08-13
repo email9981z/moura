@@ -100,7 +100,7 @@
     .menu-toggle { display: none; border: 0; padding: 8px; color: var(--white-ink); background: transparent; }
 
     .hero { position: relative; isolation: isolate; color: var(--white-ink); background: var(--espresso); overflow: hidden; }
-    .hero::before { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(36,29,24,.99) 0%, rgba(36,29,24,.83) 43%, rgba(36,29,24,.34) 100%), url("/manus-storage/biblia-explicada-editorial_a801740b.png") center/cover; content: ""; }
+    .hero::before { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(36,29,24,.99) 0%, rgba(36,29,24,.88) 43%, rgba(36,29,24,.5) 100%), #241d18; content: ""; }
     .hero::after { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, transparent 55%, var(--espresso) 100%); content: ""; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(420px, .8fr); align-items: center; gap: 70px; min-height: 645px; padding: 78px 0 56px; }
     .hero-copy { max-width: 640px; }
@@ -340,9 +340,12 @@
       .final-content .button { width: 100%; }
       .final-notes { gap: 10px 14px; }
       .footer-main { align-items: flex-start; flex-direction: column; justify-content: center; padding: 27px 0; }
-      .mobile-cta { position: fixed; z-index: 40; right: 10px; bottom: 10px; left: 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; padding: 10px 14px; color: var(--espresso); background: var(--amber); box-shadow: 0 12px 30px rgba(0,0,0,.25); font-size: .75rem; font-weight: 800; text-decoration: none; }
-      .mobile-cta span { display: flex; flex-direction: column; line-height: 1.05; }
-      .mobile-cta small { margin-bottom: 3px; font-size: .57rem; letter-spacing: .11em; text-transform: uppercase; }
+      .mobile-cta { position: fixed; z-index: 40; right: 10px; bottom: 10px; left: 10px; display: flex; align-items: center; justify-content: space-between; gap: 11px; min-height: 68px; padding: 9px 9px 9px 14px; border: 1px solid rgba(213,164,71,.42); border-radius: 14px; color: var(--espresso); background: rgba(255,253,248,.97); box-shadow: 0 14px 34px rgba(36,29,24,.25), 0 2px 7px rgba(36,29,24,.12); backdrop-filter: blur(14px); font-size: .75rem; font-weight: 800; text-decoration: none; }
+      .mobile-cta-info { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 2px; line-height: 1.05; }
+      .mobile-cta-info small { overflow: hidden; margin-bottom: 2px; color: var(--olive); font-size: .52rem; letter-spacing: .13em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+      .mobile-cta-info strong { font-size: .79rem; }
+      .mobile-cta-info em { color: var(--muted); font-size: .61rem; font-style: normal; font-weight: 600; }
+      .mobile-cta-button { display: inline-flex; align-items: center; gap: 7px; flex: 0 0 auto; min-height: 48px; padding: 0 14px; border-radius: 9px; color: var(--espresso); background: var(--amber); font-size: .69rem; letter-spacing: .04em; text-transform: uppercase; }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -402,7 +405,7 @@
         <div class="hero-product reveal reveal-delay">
           <span class="chapter-tag">CAPÍTULO 01 <span>•</span> VISÃO GERAL</span>
           <div class="hero-image-wrap">
-            <img src="https://bibliaexplicada.netlify.app/assets/mokup%20(3)_1764297177798-CFbnVedc.webp" alt="Coleção Bíblia Explicada com livros de estudo e uma Bíblia aberta" width="600" height="750">
+          <img src="/manus-storage/devocional-365-hero_dca20a73.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=85';" alt="Devocional aberto com uma leitura diária, marcador, café e luz suave da manhã" width="600" height="750">
           </div>
           <div class="hero-price">
             <span>Seu próximo ano</span>
@@ -557,7 +560,10 @@
     <div class="frame disclaimer">Antes de publicar, confirme preços, prazos, depoimentos, números e condições comerciais com o proprietário do produto. Esta página não inventa avaliações nem prova social.</div>
   </footer>
 
-  <a class="mobile-cta" data-checkout href="#oferta"><span><small>Devocional do dia</small>Abrir o primeiro dia • R$ 27,00</span><span aria-hidden="true">↗</span></a>
+  <a class="mobile-cta" data-checkout href="#oferta" aria-label="Começar o Devocional 365 Dias por 27 reais">
+    <span class="mobile-cta-info"><small>DEVOCIONAL 365 DIAS</small><strong>365 dias • R$ 27</strong><em>Acesso imediato</em></span>
+    <span class="mobile-cta-button">Começar <span aria-hidden="true">↗</span></span>
+  </a>
 
   <script>
     /* Direção visual: Editorial Sacro Contemporâneo — interações curtas, clareza e redução de fricção. */
