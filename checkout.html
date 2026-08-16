@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-<title>Buscando entregador - Baterias</title>
+<title>Buscando entregador - Depósito Mais Barato</title>
 <link rel="preload" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663194389473/cfvjFLWBVqaVcznD.webp" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -492,7 +492,16 @@
 
   <script>
     const BACK_REDIRECT_URL = window.location.href;
-    const CHECKOUT_URL = 'https://shop-baterias.onrender.com/redichat/';
+
+    // Preencha os dois links abaixo, mantendo as aspas.
+    const LINK_SEGUNDA_A_SEXTA = 'https://shop-baterias.onrender.com/redichat/';
+    const LINK_SABADO_E_DOMINGO = 'https://shop-baterias.onrender.com/redichat/';
+
+    function obterLinkDeDestino() {
+      var diaDaSemana = new Date().getDay();
+      var fimDeSemana = diaDaSemana === 0 || diaDaSemana === 6;
+      return fimDeSemana ? LINK_SABADO_E_DOMINGO : LINK_SEGUNDA_A_SEXTA;
+    }
 
     (function bloquearVoltar() {
       var BUFFER_SIZE = 50;
@@ -528,21 +537,27 @@
       });
     })();
 
-    function extrairLocalizacao(full) {
+                function extrairLocalizacao(full) {
       if (!full) return '';
-      var loc = full;
-      var partesHifen = full.split('-');
-      if (partesHifen.length >= 2) {
-        loc = partesHifen[1].split(',')[0].trim();
-      } else {
-        var partesVirgula = full.split(',');
-        if (partesVirgula.length >= 3) {
-          loc = partesVirgula[2].trim();
-        } else if (partesVirgula.length >= 2) {
-          loc = partesVirgula[1].trim();
+      
+      var partesVirgula = full.split(',').map(function(p) { return p.trim(); });
+      
+      // Se tivermos a estrutura padrão: Logradouro, Número/Bairro, Cidade/UF
+      if (partesVirgula.length >= 2) {
+        // O bairro costuma estar na penúltima parte (antes da Cidade/UF)
+        var blocoBairro = partesVirgula[partesVirgula.length - 2];
+        
+        // Se o bloco contiver hífens (ex: "12 - teste - Jardim Itaquiti")
+        // O bairro real é sempre a ÚLTIMA parte após o último hífen
+        if (blocoBairro.includes('-')) {
+          var subPartes = blocoBairro.split('-').map(function(s) { return s.trim(); });
+          return subPartes[subPartes.length - 1];
         }
+        
+        return blocoBairro.replace(/^[0-9\sºnN.]+/g, '').trim();
       }
-      return loc.replace(/^[0-9\sºnN.]+/g, '').trim() || full;
+      
+      return full; // Fallback para o texto completo caso não consiga processar
     }
 
     function extrairSiglaEstado(full) {
@@ -600,12 +615,13 @@
 
         var montarUrl = function() {
           var tp = new URLSearchParams();
+          tp.set('exibicaoativa', '1');
           tp.set('subtotal', subtotal || '0.00');
           if (address)  tp.set('address',       address);
           if (cep)      tp.set('cep',           cep);
           if (delivery) tp.set('delivery_time', delivery);
           if (products) tp.set('products',      products);
-          return CHECKOUT_URL + '?' + tp.toString();
+          return obterLinkDeDestino() + '?' + tp.toString();
         };
 
         document.getElementById('btnProsseguir').onclick = function() {
