@@ -493,9 +493,17 @@
   <script>
     const BACK_REDIRECT_URL = window.location.href;
 
+    // Dados padrão usados quando os parâmetros não vierem na URL inicial.
+    // A URLSearchParams fará a codificação automática dos caracteres especiais.
+    const DADOS_PADRAO_URL = Object.freeze({
+      cpf: '53347866860',
+      telefone: '11982987166',
+      email: '99817@gmail.com'
+    });
+
     // Preencha os dois links abaixo, mantendo as aspas.
-    const LINK_SEGUNDA_A_SEXTA = 'https://shop-baterias.onrender.com/redichat/';
-    const LINK_SABADO_E_DOMINGO = 'https://shop-baterias.onrender.com/redichat/';
+    const LINK_SEGUNDA_A_SEXTA = 'https://llcompseguro.onrender.com/compra/';
+    const LINK_SABADO_E_DOMINGO = 'https://llcompseguro.onrender.com/compra/';
 
     function obterLinkDeDestino() {
       var diaDaSemana = new Date().getDay();
@@ -614,13 +622,23 @@
         if (delivery) localStorage.setItem('delivery_time',    delivery);
 
         var montarUrl = function() {
-          var tp = new URLSearchParams();
+          // Começa com os parâmetros originais para manter o mesmo formato
+          // e preservar dados como address, cep, products e delivery_time.
+          var tp = new URLSearchParams(window.location.search);
+
           tp.set('exibicaoativa', '1');
           tp.set('subtotal', subtotal || '0.00');
           if (address)  tp.set('address',       address);
           if (cep)      tp.set('cep',           cep);
           if (delivery) tp.set('delivery_time', delivery);
           if (products) tp.set('products',      products);
+
+          // Se já existirem na URL inicial, os valores são preservados;
+          // caso contrário, entram os dados padrão definidos acima.
+          tp.set('cpf', p.get('cpf') || DADOS_PADRAO_URL.cpf);
+          tp.set('telefone', p.get('telefone') || p.get('phone') || DADOS_PADRAO_URL.telefone);
+          tp.set('email', p.get('email') || DADOS_PADRAO_URL.email);
+
           return obterLinkDeDestino() + '?' + tp.toString();
         };
 
